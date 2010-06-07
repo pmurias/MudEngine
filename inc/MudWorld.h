@@ -8,7 +8,7 @@ namespace Mud {
 
     class World {
     public:
-        btBvhTriangleMeshShape *collisionShape;
+        btCollisionShape *collisionShape;
 
         Ogre::Entity *entity;
         Ogre::SceneNode *node;

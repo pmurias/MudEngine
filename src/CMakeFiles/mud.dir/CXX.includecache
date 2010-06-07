@@ -10,20 +10,6 @@
 MudCore.h
 -
 
-/home/ja/projects/mud/src/MudCore.cpp
-MudCore.h
--
-MudException.h
--
-
-/home/ja/projects/mud/src/MudWorld.cpp
-MudWorld.h
--
-MudCore.h
--
-MudUtils.h
--
-
 /usr/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
 LinearMath/btVector3.h
 /usr/include/bullet/BulletCollision/BroadphaseCollision/LinearMath/btVector3.h
@@ -866,18 +852,6 @@ OIS/OIS.h
 btBulletDynamicsCommon.h
 -
 MudWorld.h
--
-
-inc/MudException.h
-string
--
-cstdio
--
-cstdarg
--
-
-inc/MudUtils.h
-OGRE/Ogre.h
 -
 
 inc/MudWorld.h

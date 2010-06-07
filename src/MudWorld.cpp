@@ -23,13 +23,23 @@ namespace Mud {
  	    btTriangleIndexVertexArray *vertexArray = new btTriangleIndexVertexArray(
             indexCount / 3, 
             (int *)(indices), 
-            4, 
+            12, 
             vertexCount, 
             (btScalar *)(vertices), 
             12
         );
 
         collisionShape = new btBvhTriangleMeshShape(vertexArray, true);
+
+        btDefaultMotionState *levelMotionState = new btDefaultMotionState(
+            btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0))
+            );
+
+        btRigidBody::btRigidBodyConstructionInfo
+            levelRigidBodyCI(0, levelMotionState, collisionShape, btVector3(0,0,0));
+        btRigidBody* body = new btRigidBody(levelRigidBodyCI);
+
+        core.bulWorld->addRigidBody(body);
     }
 
 }
