@@ -1,0 +1,6 @@
+Source="src/" filter="*.cpp" {
+}
+
+Include="inc/" filter="*.h" {
+}
+

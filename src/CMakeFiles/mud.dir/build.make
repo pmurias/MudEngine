@@ -97,9 +97,105 @@ src/CMakeFiles/mud.dir/MudUtils.o.provides: src/CMakeFiles/mud.dir/MudUtils.o.re
 src/CMakeFiles/mud.dir/MudUtils.o.provides.build: src/CMakeFiles/mud.dir/MudUtils.o
 .PHONY : src/CMakeFiles/mud.dir/MudUtils.o.provides.build
 
+src/CMakeFiles/mud.dir/MudHashmapManager.o: src/CMakeFiles/mud.dir/flags.make
+src/CMakeFiles/mud.dir/MudHashmapManager.o: src/MudHashmapManager.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/mud.dir/MudHashmapManager.o"
+	cd /home/ja/projects/mud/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mud.dir/MudHashmapManager.o -c /home/ja/projects/mud/src/MudHashmapManager.cpp
+
+src/CMakeFiles/mud.dir/MudHashmapManager.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mud.dir/MudHashmapManager.i"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ja/projects/mud/src/MudHashmapManager.cpp > CMakeFiles/mud.dir/MudHashmapManager.i
+
+src/CMakeFiles/mud.dir/MudHashmapManager.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mud.dir/MudHashmapManager.s"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ja/projects/mud/src/MudHashmapManager.cpp -o CMakeFiles/mud.dir/MudHashmapManager.s
+
+src/CMakeFiles/mud.dir/MudHashmapManager.o.requires:
+.PHONY : src/CMakeFiles/mud.dir/MudHashmapManager.o.requires
+
+src/CMakeFiles/mud.dir/MudHashmapManager.o.provides: src/CMakeFiles/mud.dir/MudHashmapManager.o.requires
+	$(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudHashmapManager.o.provides.build
+.PHONY : src/CMakeFiles/mud.dir/MudHashmapManager.o.provides
+
+src/CMakeFiles/mud.dir/MudHashmapManager.o.provides.build: src/CMakeFiles/mud.dir/MudHashmapManager.o
+.PHONY : src/CMakeFiles/mud.dir/MudHashmapManager.o.provides.build
+
+src/CMakeFiles/mud.dir/MudEntity.o: src/CMakeFiles/mud.dir/flags.make
+src/CMakeFiles/mud.dir/MudEntity.o: src/MudEntity.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/mud.dir/MudEntity.o"
+	cd /home/ja/projects/mud/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mud.dir/MudEntity.o -c /home/ja/projects/mud/src/MudEntity.cpp
+
+src/CMakeFiles/mud.dir/MudEntity.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mud.dir/MudEntity.i"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ja/projects/mud/src/MudEntity.cpp > CMakeFiles/mud.dir/MudEntity.i
+
+src/CMakeFiles/mud.dir/MudEntity.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mud.dir/MudEntity.s"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ja/projects/mud/src/MudEntity.cpp -o CMakeFiles/mud.dir/MudEntity.s
+
+src/CMakeFiles/mud.dir/MudEntity.o.requires:
+.PHONY : src/CMakeFiles/mud.dir/MudEntity.o.requires
+
+src/CMakeFiles/mud.dir/MudEntity.o.provides: src/CMakeFiles/mud.dir/MudEntity.o.requires
+	$(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntity.o.provides.build
+.PHONY : src/CMakeFiles/mud.dir/MudEntity.o.provides
+
+src/CMakeFiles/mud.dir/MudEntity.o.provides.build: src/CMakeFiles/mud.dir/MudEntity.o
+.PHONY : src/CMakeFiles/mud.dir/MudEntity.o.provides.build
+
+src/CMakeFiles/mud.dir/MudVisibleEntity.o: src/CMakeFiles/mud.dir/flags.make
+src/CMakeFiles/mud.dir/MudVisibleEntity.o: src/MudVisibleEntity.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/mud.dir/MudVisibleEntity.o"
+	cd /home/ja/projects/mud/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mud.dir/MudVisibleEntity.o -c /home/ja/projects/mud/src/MudVisibleEntity.cpp
+
+src/CMakeFiles/mud.dir/MudVisibleEntity.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mud.dir/MudVisibleEntity.i"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ja/projects/mud/src/MudVisibleEntity.cpp > CMakeFiles/mud.dir/MudVisibleEntity.i
+
+src/CMakeFiles/mud.dir/MudVisibleEntity.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mud.dir/MudVisibleEntity.s"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ja/projects/mud/src/MudVisibleEntity.cpp -o CMakeFiles/mud.dir/MudVisibleEntity.s
+
+src/CMakeFiles/mud.dir/MudVisibleEntity.o.requires:
+.PHONY : src/CMakeFiles/mud.dir/MudVisibleEntity.o.requires
+
+src/CMakeFiles/mud.dir/MudVisibleEntity.o.provides: src/CMakeFiles/mud.dir/MudVisibleEntity.o.requires
+	$(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntity.o.provides.build
+.PHONY : src/CMakeFiles/mud.dir/MudVisibleEntity.o.provides
+
+src/CMakeFiles/mud.dir/MudVisibleEntity.o.provides.build: src/CMakeFiles/mud.dir/MudVisibleEntity.o
+.PHONY : src/CMakeFiles/mud.dir/MudVisibleEntity.o.provides.build
+
+src/CMakeFiles/mud.dir/MudSceneryEntity.o: src/CMakeFiles/mud.dir/flags.make
+src/CMakeFiles/mud.dir/MudSceneryEntity.o: src/MudSceneryEntity.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/mud.dir/MudSceneryEntity.o"
+	cd /home/ja/projects/mud/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mud.dir/MudSceneryEntity.o -c /home/ja/projects/mud/src/MudSceneryEntity.cpp
+
+src/CMakeFiles/mud.dir/MudSceneryEntity.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mud.dir/MudSceneryEntity.i"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ja/projects/mud/src/MudSceneryEntity.cpp > CMakeFiles/mud.dir/MudSceneryEntity.i
+
+src/CMakeFiles/mud.dir/MudSceneryEntity.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mud.dir/MudSceneryEntity.s"
+	cd /home/ja/projects/mud/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ja/projects/mud/src/MudSceneryEntity.cpp -o CMakeFiles/mud.dir/MudSceneryEntity.s
+
+src/CMakeFiles/mud.dir/MudSceneryEntity.o.requires:
+.PHONY : src/CMakeFiles/mud.dir/MudSceneryEntity.o.requires
+
+src/CMakeFiles/mud.dir/MudSceneryEntity.o.provides: src/CMakeFiles/mud.dir/MudSceneryEntity.o.requires
+	$(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntity.o.provides.build
+.PHONY : src/CMakeFiles/mud.dir/MudSceneryEntity.o.provides
+
+src/CMakeFiles/mud.dir/MudSceneryEntity.o.provides.build: src/CMakeFiles/mud.dir/MudSceneryEntity.o
+.PHONY : src/CMakeFiles/mud.dir/MudSceneryEntity.o.provides.build
+
 src/CMakeFiles/mud.dir/MudWorld.o: src/CMakeFiles/mud.dir/flags.make
 src/CMakeFiles/mud.dir/MudWorld.o: src/MudWorld.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/mud.dir/MudWorld.o"
 	cd /home/ja/projects/mud/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mud.dir/MudWorld.o -c /home/ja/projects/mud/src/MudWorld.cpp
 
@@ -123,7 +219,7 @@ src/CMakeFiles/mud.dir/MudWorld.o.provides.build: src/CMakeFiles/mud.dir/MudWorl
 
 src/CMakeFiles/mud.dir/MudCore.o: src/CMakeFiles/mud.dir/flags.make
 src/CMakeFiles/mud.dir/MudCore.o: src/MudCore.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/mud.dir/MudCore.o"
 	cd /home/ja/projects/mud/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mud.dir/MudCore.o -c /home/ja/projects/mud/src/MudCore.cpp
 
@@ -147,7 +243,7 @@ src/CMakeFiles/mud.dir/MudCore.o.provides.build: src/CMakeFiles/mud.dir/MudCore.
 
 src/CMakeFiles/mud.dir/Main.o: src/CMakeFiles/mud.dir/flags.make
 src/CMakeFiles/mud.dir/Main.o: src/Main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ja/projects/mud/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/mud.dir/Main.o"
 	cd /home/ja/projects/mud/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/mud.dir/Main.o -c /home/ja/projects/mud/src/Main.cpp
 
@@ -173,6 +269,10 @@ src/CMakeFiles/mud.dir/Main.o.provides.build: src/CMakeFiles/mud.dir/Main.o
 mud_OBJECTS = \
 "CMakeFiles/mud.dir/MudException.o" \
 "CMakeFiles/mud.dir/MudUtils.o" \
+"CMakeFiles/mud.dir/MudHashmapManager.o" \
+"CMakeFiles/mud.dir/MudEntity.o" \
+"CMakeFiles/mud.dir/MudVisibleEntity.o" \
+"CMakeFiles/mud.dir/MudSceneryEntity.o" \
 "CMakeFiles/mud.dir/MudWorld.o" \
 "CMakeFiles/mud.dir/MudCore.o" \
 "CMakeFiles/mud.dir/Main.o"
@@ -182,6 +282,10 @@ mud_EXTERNAL_OBJECTS =
 
 src/mud: src/CMakeFiles/mud.dir/MudException.o
 src/mud: src/CMakeFiles/mud.dir/MudUtils.o
+src/mud: src/CMakeFiles/mud.dir/MudHashmapManager.o
+src/mud: src/CMakeFiles/mud.dir/MudEntity.o
+src/mud: src/CMakeFiles/mud.dir/MudVisibleEntity.o
+src/mud: src/CMakeFiles/mud.dir/MudSceneryEntity.o
 src/mud: src/CMakeFiles/mud.dir/MudWorld.o
 src/mud: src/CMakeFiles/mud.dir/MudCore.o
 src/mud: src/CMakeFiles/mud.dir/Main.o
@@ -197,6 +301,10 @@ src/CMakeFiles/mud.dir/build: src/mud
 
 src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudException.o.requires
 src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudUtils.o.requires
+src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudHashmapManager.o.requires
+src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudEntity.o.requires
+src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudVisibleEntity.o.requires
+src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudSceneryEntity.o.requires
 src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudWorld.o.requires
 src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/MudCore.o.requires
 src/CMakeFiles/mud.dir/requires: src/CMakeFiles/mud.dir/Main.o.requires

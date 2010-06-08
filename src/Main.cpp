@@ -19,7 +19,7 @@ int main(void) {
 
     btCollisionShape *ballShape = new btSphereShape(1);
     btDefaultMotionState *ballMS = new btDefaultMotionState(
-        btTransform(btQuaternion(0,0,0,1), btVector3(6,10,6))
+        btTransform(btQuaternion(0,0,0,1), btVector3(6,2,6))
         );
     btVector3 ballInertia(0,0,0);
     ballShape->calculateLocalInertia(1, ballInertia);
@@ -28,10 +28,13 @@ int main(void) {
     btRigidBody *ballBody = new btRigidBody(ballCI);
     core.bulWorld->addRigidBody(ballBody);
     ballBody->setDamping(0.5, 0.8);
+    ballBody->setActivationState(DISABLE_DEACTIVATION);
+
+    ballBody->setAngularFactor(btVector3(0,1,0));
 
     Ogre::Entity *entity = core.ogreSceneMgr->createEntity("Ball", "character.mesh");
     Ogre::SceneNode *node = core.ogreSceneMgr->getRootSceneNode()->createChildSceneNode();
-    node->attachObject(entity);
+    node->attachObject(entity);    
 
     core.ogreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 

@@ -143,6 +143,21 @@ MudCore.s:
 .PHONY : MudCore.s
 
 # target to build an object file
+MudEntity.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntity.o
+.PHONY : MudEntity.o
+
+# target to preprocess a source file
+MudEntity.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntity.i
+.PHONY : MudEntity.i
+
+# target to generate assembly for a file
+MudEntity.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntity.s
+.PHONY : MudEntity.s
+
+# target to build an object file
 MudException.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudException.o
 .PHONY : MudException.o
@@ -158,6 +173,36 @@ MudException.s:
 .PHONY : MudException.s
 
 # target to build an object file
+MudHashmapManager.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudHashmapManager.o
+.PHONY : MudHashmapManager.o
+
+# target to preprocess a source file
+MudHashmapManager.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudHashmapManager.i
+.PHONY : MudHashmapManager.i
+
+# target to generate assembly for a file
+MudHashmapManager.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudHashmapManager.s
+.PHONY : MudHashmapManager.s
+
+# target to build an object file
+MudSceneryEntity.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntity.o
+.PHONY : MudSceneryEntity.o
+
+# target to preprocess a source file
+MudSceneryEntity.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntity.i
+.PHONY : MudSceneryEntity.i
+
+# target to generate assembly for a file
+MudSceneryEntity.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntity.s
+.PHONY : MudSceneryEntity.s
+
+# target to build an object file
 MudUtils.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudUtils.o
 .PHONY : MudUtils.o
@@ -171,6 +216,21 @@ MudUtils.i:
 MudUtils.s:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudUtils.s
 .PHONY : MudUtils.s
+
+# target to build an object file
+MudVisibleEntity.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntity.o
+.PHONY : MudVisibleEntity.o
+
+# target to preprocess a source file
+MudVisibleEntity.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntity.i
+.PHONY : MudVisibleEntity.i
+
+# target to generate assembly for a file
+MudVisibleEntity.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntity.s
+.PHONY : MudVisibleEntity.s
 
 # target to build an object file
 MudWorld.o:
@@ -202,12 +262,24 @@ help:
 	@echo "... MudCore.o"
 	@echo "... MudCore.i"
 	@echo "... MudCore.s"
+	@echo "... MudEntity.o"
+	@echo "... MudEntity.i"
+	@echo "... MudEntity.s"
 	@echo "... MudException.o"
 	@echo "... MudException.i"
 	@echo "... MudException.s"
+	@echo "... MudHashmapManager.o"
+	@echo "... MudHashmapManager.i"
+	@echo "... MudHashmapManager.s"
+	@echo "... MudSceneryEntity.o"
+	@echo "... MudSceneryEntity.i"
+	@echo "... MudSceneryEntity.s"
 	@echo "... MudUtils.o"
 	@echo "... MudUtils.i"
 	@echo "... MudUtils.s"
+	@echo "... MudVisibleEntity.o"
+	@echo "... MudVisibleEntity.i"
+	@echo "... MudVisibleEntity.s"
 	@echo "... MudWorld.o"
 	@echo "... MudWorld.i"
 	@echo "... MudWorld.s"
