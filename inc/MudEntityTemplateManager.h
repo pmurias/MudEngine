@@ -7,8 +7,10 @@
 namespace Mud {
 
     class EntityTemplateManager : public HashmapManager<EntityTemplate *> {
+    public:
 
-    }
+        EntityTemplate *getTemplate(const char *key);
+    };
 }
 
 #endif

@@ -1,4 +1,5 @@
 #include <MudCore.h>
+#include <MudSceneryEntityTemplate.h>
 
 Mud::Core &core = Mud::Core::GetInstance();
 
@@ -38,6 +39,8 @@ int main(void) {
 
     core.ogreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
+    Mud::EntityTemplate *temp = new Mud::SceneryEntityTemplate();
+    core.entityTemplateManager.map["test"] = temp;
 
     bool run = true;
 

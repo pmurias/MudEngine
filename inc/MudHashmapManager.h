@@ -11,7 +11,9 @@ namespace Mud {
     public:
         std::tr1::unordered_map<std::string, T> map;
 
-        virtual T getElement(const char *key);
+        virtual T getElement(const char *key) {
+            return map[key];
+        }
     };
 
 }

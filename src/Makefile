@@ -158,6 +158,36 @@ MudEntity.s:
 .PHONY : MudEntity.s
 
 # target to build an object file
+MudEntityTemplate.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityTemplate.o
+.PHONY : MudEntityTemplate.o
+
+# target to preprocess a source file
+MudEntityTemplate.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityTemplate.i
+.PHONY : MudEntityTemplate.i
+
+# target to generate assembly for a file
+MudEntityTemplate.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityTemplate.s
+.PHONY : MudEntityTemplate.s
+
+# target to build an object file
+MudEntityTemplateManager.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityTemplateManager.o
+.PHONY : MudEntityTemplateManager.o
+
+# target to preprocess a source file
+MudEntityTemplateManager.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityTemplateManager.i
+.PHONY : MudEntityTemplateManager.i
+
+# target to generate assembly for a file
+MudEntityTemplateManager.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityTemplateManager.s
+.PHONY : MudEntityTemplateManager.s
+
+# target to build an object file
 MudException.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudException.o
 .PHONY : MudException.o
@@ -201,6 +231,21 @@ MudSceneryEntity.i:
 MudSceneryEntity.s:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntity.s
 .PHONY : MudSceneryEntity.s
+
+# target to build an object file
+MudSceneryEntityTemplate.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o
+.PHONY : MudSceneryEntityTemplate.o
+
+# target to preprocess a source file
+MudSceneryEntityTemplate.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.i
+.PHONY : MudSceneryEntityTemplate.i
+
+# target to generate assembly for a file
+MudSceneryEntityTemplate.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.s
+.PHONY : MudSceneryEntityTemplate.s
 
 # target to build an object file
 MudUtils.o:
@@ -265,6 +310,12 @@ help:
 	@echo "... MudEntity.o"
 	@echo "... MudEntity.i"
 	@echo "... MudEntity.s"
+	@echo "... MudEntityTemplate.o"
+	@echo "... MudEntityTemplate.i"
+	@echo "... MudEntityTemplate.s"
+	@echo "... MudEntityTemplateManager.o"
+	@echo "... MudEntityTemplateManager.i"
+	@echo "... MudEntityTemplateManager.s"
 	@echo "... MudException.o"
 	@echo "... MudException.i"
 	@echo "... MudException.s"
@@ -274,6 +325,9 @@ help:
 	@echo "... MudSceneryEntity.o"
 	@echo "... MudSceneryEntity.i"
 	@echo "... MudSceneryEntity.s"
+	@echo "... MudSceneryEntityTemplate.o"
+	@echo "... MudSceneryEntityTemplate.i"
+	@echo "... MudSceneryEntityTemplate.s"
 	@echo "... MudUtils.o"
 	@echo "... MudUtils.i"
 	@echo "... MudUtils.s"

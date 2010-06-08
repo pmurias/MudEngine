@@ -6,6 +6,7 @@
 #include <btBulletDynamicsCommon.h>
 
 #include <MudWorld.h>
+#include <MudEntityTemplateManager.h>
 
 namespace Mud {
 
@@ -31,6 +32,7 @@ namespace Mud {
         float timeStep;
 
         World world;
+        EntityTemplateManager entityTemplateManager;
 
         static Core &GetInstance();
 

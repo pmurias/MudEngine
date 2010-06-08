@@ -6,12 +6,10 @@
 
 #IncludeRegexTransform: 
 
-/home/ja/projects/mud/src/MudEntity.cpp
-MudEntity.h
+/home/ja/projects/mud/src/Main.cpp
+MudCore.h
 -
-
-/home/ja/projects/mud/src/MudVisibleEntity.cpp
-MudVisibleEntity.h
+MudSceneryEntityTemplate.h
 -
 
 /usr/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
@@ -848,11 +846,43 @@ BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h
 BulletDynamics/Vehicle/btRaycastVehicle.h
 /usr/include/bullet/BulletDynamics/Vehicle/btRaycastVehicle.h
 
-inc/MudEntity.h
+inc/MudCore.h
+OGRE/Ogre.h
+-
+OIS/OIS.h
+-
+btBulletDynamicsCommon.h
+-
+MudWorld.h
+-
+MudEntityTemplateManager.h
+-
+
+inc/MudEntityTemplate.h
 string
 -
 
-inc/MudVisibleEntity.h
+inc/MudEntityTemplateManager.h
+MudHashmapManager.h
+-
+MudEntityTemplate.h
+-
+
+inc/MudHashmapManager.h
+tr1/unordered_map
+-
+string
+-
+
+inc/MudSceneryEntityTemplate.h
+string
+-
+btBulletDynamicsCommon.h
+-
+MudEntityTemplate.h
+-
+
+inc/MudWorld.h
 OGRE/Ogre.h
 -
 btBulletDynamicsCommon.h
