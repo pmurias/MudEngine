@@ -9,6 +9,8 @@ namespace Mud {
     class EntityTemplateManager : public HashmapManager<EntityTemplate *> {
     public:
 
+        EntityTemplateManager();
+
         EntityTemplate *getTemplate(const char *key);
     };
 }

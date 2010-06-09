@@ -3,8 +3,10 @@
 
 #include <string>
 #include <btBulletDynamicsCommon.h>
+#include <OGRE/Ogre.h>
 
 #include <MudEntityTemplate.h>
+#include <MudEnums.h>
 
 namespace Mud {
 
@@ -13,7 +15,11 @@ namespace Mud {
 
         bool collidable;        
         bool dynamic;
-        btVector3 boundingBoxSize;
+        float mass;
+        BoundingVolumeType boundingVolumeType;
+        btVector3 boxSize;
+        float radius;
+        Ogre::Vector2 capsuleSize;
 
         std::string meshName;
 

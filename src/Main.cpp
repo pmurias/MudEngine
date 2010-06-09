@@ -1,5 +1,7 @@
 #include <MudCore.h>
 #include <MudSceneryEntityTemplate.h>
+#include <MudSceneryEntity.h>
+#include <MudUtils.h>
 
 Mud::Core &core = Mud::Core::GetInstance();
 
@@ -35,12 +37,37 @@ int main(void) {
 
     Ogre::Entity *entity = core.ogreSceneMgr->createEntity("Ball", "character.mesh");
     Ogre::SceneNode *node = core.ogreSceneMgr->getRootSceneNode()->createChildSceneNode();
-    node->attachObject(entity);    
+    node->attachObject(entity);
 
     core.ogreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
 
-    Mud::EntityTemplate *temp = new Mud::SceneryEntityTemplate();
+    Mud::SceneryEntityTemplate *temp = new Mud::SceneryEntityTemplate();
+    temp->meshName = "box.mesh";
+    temp->collidable = true;
+    temp->dynamic = true;
+    temp->mass = 3;
+    temp->boxSize = btVector3(1,1,1);
+    temp->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.map["test"] = temp;
+
+    temp = new Mud::SceneryEntityTemplate();
+    temp->meshName = "box.mesh";
+    temp->collidable = true;
+    temp->dynamic = false;
+    temp->mass = 0;
+    temp->boxSize = btVector3(1,1,1);
+    temp->boundingVolumeType = Mud::BVT_BOX;
+    core.entityTemplateManager.map["test2"] = temp;
+
+    Mud::SceneryEntity *ent = new Mud::SceneryEntity();
+    ent->Create("Box", "test");
+    ent->SetPosition(Ogre::Vector3(3, 1, 0));
+    ent->body->setDamping(0.9, 0.9);
+
+    Mud::SceneryEntity *ent2 = new Mud::SceneryEntity();
+    ent2->Create("Box2", "test2");
+    ent2->SetPosition(Ogre::Vector3(-3, 1, 0));
+    ent2->body->setDamping(0.9, 0.9);
 
     bool run = true;
 
@@ -62,6 +89,10 @@ int main(void) {
         ballBody->getMotionState()->getWorldTransform(trans);
         node->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
         node->setOrientation(Ogre::Quaternion(trans.getRotation().getW(), trans.getRotation().getX(), trans.getRotation().getY(), trans.getRotation().getZ()));
+
+        ent->UpdatePosition();
+        ent2->UpdatePosition();
+
     }
 
     core.DestroyBullet();

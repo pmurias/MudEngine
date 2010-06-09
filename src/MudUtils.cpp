@@ -99,5 +99,21 @@ namespace Mud {
         }
     }
 
+    btVector3 Utils::OgreVec3ToBt(Ogre::Vector3 vec) {
+        return btVector3(vec.x, vec.y, vec.z);
+    }
+
+    Ogre::Vector3 Utils::BtVec3ToOgre(btVector3 vec) {
+        return Ogre::Vector3(vec.x(), vec.y(), vec.z());
+    }
+
+    btQuaternion Utils::OgreQuatToBt(Ogre::Quaternion q) {
+        return btQuaternion(q.x, q.y, q.z, q.w);
+    }
+
+    Ogre::Quaternion Utils::BtQuatToOgre(btQuaternion q) {
+        return Ogre::Quaternion(q.w(), q.x(), q.y(), q.z());
+    }
+
 }
 

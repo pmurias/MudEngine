@@ -11,6 +11,10 @@ MudCore.h
 -
 MudSceneryEntityTemplate.h
 -
+MudSceneryEntity.h
+-
+MudUtils.h
+-
 
 /usr/include/bullet/BulletCollision/BroadphaseCollision/btAxisSweep3.h
 LinearMath/btVector3.h
@@ -861,6 +865,8 @@ MudEntityTemplateManager.h
 inc/MudEntityTemplate.h
 string
 -
+MudEnums.h
+-
 
 inc/MudEntityTemplateManager.h
 MudHashmapManager.h
@@ -868,10 +874,26 @@ MudHashmapManager.h
 MudEntityTemplate.h
 -
 
+inc/MudEnums.h
+
+inc/MudException.h
+string
+-
+cstdio
+-
+cstdarg
+-
+
 inc/MudHashmapManager.h
 tr1/unordered_map
 -
 string
+-
+MudException.h
+-
+
+inc/MudSceneryEntity.h
+MudVisibleEntity.h
 -
 
 inc/MudSceneryEntityTemplate.h
@@ -879,7 +901,23 @@ string
 -
 btBulletDynamicsCommon.h
 -
+OGRE/Ogre.h
+-
 MudEntityTemplate.h
+-
+MudEnums.h
+-
+
+inc/MudUtils.h
+OGRE/Ogre.h
+-
+btBulletDynamicsCommon.h
+-
+
+inc/MudVisibleEntity.h
+OGRE/Ogre.h
+-
+btBulletDynamicsCommon.h
 -
 
 inc/MudWorld.h

@@ -2,13 +2,9 @@
 #define _MudEntityTemplate
 
 #include <string>
+#include <MudEnums.h>
 
 namespace Mud {
-
-    enum EntityTemplateType {
-        ETT_NONE,
-        ETT_SCENERY
-    };
 
     class EntityTemplate {
     public:

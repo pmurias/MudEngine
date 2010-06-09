@@ -7,8 +7,11 @@ namespace Mud {
 
     class SceneryEntity : public VisibleEntity {
     public:
-        void Create(char *name, char *entityTemplateName);
+        void Create(const char *name, const char *entityTemplateName);
         void Destroy();
+
+        void SetPosition(Ogre::Vector3 pos);
+        void UpdatePosition();
     };
 
 }

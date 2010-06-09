@@ -14,8 +14,11 @@ namespace Mud {
         btRigidBody *body;
         btCollisionShape *collisionShape;
 
-        virtual void Create(char *name, char *entityTemplateName);
+        virtual void Create(const char *name, const char *entityTemplateName);
         virtual void Destroy();
+
+        virtual void SetPosition(Ogre::Vector3 pos);
+        virtual void UpdatePosition();
     };
 
 }
