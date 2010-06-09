@@ -13,8 +13,8 @@ namespace Mud {
         Ogre::Entity *entity;
         Ogre::SceneNode *node;
 
-        void SetupWorldGraphics(char *file);
-        void SetupWorldPhysics(char *file);
+        void SetupWorldGraphics(const char *file);
+        void SetupWorldPhysics(const char *file);
     };
 }
 

@@ -1,6 +1,8 @@
 #include <MudCore.h>
 #include <MudSceneryEntityTemplate.h>
+#include <MudCharacterEntityTemplate.h>
 #include <MudSceneryEntity.h>
+#include <MudCharacterEntity.h>
 #include <MudUtils.h>
 
 Mud::Core &core = Mud::Core::GetInstance();
@@ -19,36 +21,25 @@ int main(void) {
     light->setType(Ogre::Light::LT_DIRECTIONAL);
     light->setDirection(Ogre::Vector3(0.5,-1,1));
 
-
-    btCollisionShape *ballShape = new btSphereShape(1);
-    btDefaultMotionState *ballMS = new btDefaultMotionState(
-        btTransform(btQuaternion(0,0,0,1), btVector3(6,2,6))
-        );
-    btVector3 ballInertia(0,0,0);
-    ballShape->calculateLocalInertia(1, ballInertia);
-
-    btRigidBody::btRigidBodyConstructionInfo ballCI(1, ballMS, ballShape, ballInertia);
-    btRigidBody *ballBody = new btRigidBody(ballCI);
-    core.bulWorld->addRigidBody(ballBody);
-    ballBody->setDamping(0.5, 0.8);
-    ballBody->setActivationState(DISABLE_DEACTIVATION);
-
-    ballBody->setAngularFactor(btVector3(0,1,0));
-
-    Ogre::Entity *entity = core.ogreSceneMgr->createEntity("Ball", "character.mesh");
-    Ogre::SceneNode *node = core.ogreSceneMgr->getRootSceneNode()->createChildSceneNode();
-    node->attachObject(entity);
-
     core.ogreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
+
+    Mud::CharacterEntityTemplate *chr = new Mud::CharacterEntityTemplate();
+    chr->meshName="capsule.mesh";
+    chr->mass = 10;
+    chr->radius = 0.75 * 0.5;
+    chr->height = 1.2;
+    chr->headOffset = Ogre::Vector3(0,1,0);
+    core.entityTemplateManager.addTemplate("char", chr);
+
 
     Mud::SceneryEntityTemplate *temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
     temp->collidable = true;
     temp->dynamic = true;
-    temp->mass = 3;
+    temp->mass = 900;
     temp->boxSize = btVector3(1,1,1);
     temp->boundingVolumeType = Mud::BVT_BOX;
-    core.entityTemplateManager.map["test"] = temp;
+    core.entityTemplateManager.addTemplate("test", temp);
 
     temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
@@ -57,18 +48,25 @@ int main(void) {
     temp->mass = 0;
     temp->boxSize = btVector3(1,1,1);
     temp->boundingVolumeType = Mud::BVT_BOX;
-    core.entityTemplateManager.map["test2"] = temp;
+    core.entityTemplateManager.addTemplate("test2", temp);
 
     Mud::SceneryEntity *ent = new Mud::SceneryEntity();
     ent->Create("Box", "test");
     ent->SetPosition(Ogre::Vector3(3, 1, 0));
-    ent->body->setDamping(0.9, 0.9);
 
     Mud::SceneryEntity *ent2 = new Mud::SceneryEntity();
-    ent2->Create("Box2", "test2");
+    ent2->Create("Box2", "test2"); 
     ent2->SetPosition(Ogre::Vector3(-3, 1, 0));
-    ent2->body->setDamping(0.9, 0.9);
 
+    Mud::CharacterEntity *player = new Mud::CharacterEntity();
+    player->Create("Player", "char");
+    player->SetPosition(Ogre::Vector3(6,6,6));
+
+    core.characterController.cameraDistance = 6.0;
+    core.characterController.cameraReaction = 0.1;
+    core.characterController.cameraHeight = 2.0;
+    core.characterController.character = player;    
+    
     bool run = true;
 
     core.ogreViewport->setBackgroundColour(Ogre::ColourValue(0.1, 0.0, 0.0));
@@ -77,21 +75,27 @@ int main(void) {
         core.CaptureInput();
         if (core.oisKeyboard->isKeyDown(OIS::KC_ESCAPE)) run=false;        
         if (core.oisKeyboard->isKeyDown(OIS::KC_W)) {
-            ballBody->applyImpulse(btVector3(0.7,0,1), btVector3(0,0,0));
-        }
+            player->body->setLinearVelocity(btVector3(0, 0, 6));
+        } else
         if (core.oisKeyboard->isKeyDown(OIS::KC_S)) {
-            ballBody->applyImpulse(btVector3(-0.7,0,-1), btVector3(0,0,0));
+            player->body->setLinearVelocity(btVector3(0, 0, -6));
+        } else
+        if (core.oisKeyboard->isKeyDown(OIS::KC_A)) {
+            player->body->setLinearVelocity(btVector3(6, 0, 0));
+        } else
+        if (core.oisKeyboard->isKeyDown(OIS::KC_D)) {
+            player->body->setLinearVelocity(btVector3(-6, 0, 0));
+        } else {
+            player->body->setLinearVelocity(btVector3(0, player->body->getLinearVelocity().y(), 0));
         }
 
         core.RenderOneFrame();        
 
-        btTransform trans;
-        ballBody->getMotionState()->getWorldTransform(trans);
-        node->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
-        node->setOrientation(Ogre::Quaternion(trans.getRotation().getW(), trans.getRotation().getX(), trans.getRotation().getY(), trans.getRotation().getZ()));
-
+        player->UpdatePosition();
         ent->UpdatePosition();
         ent2->UpdatePosition();
+
+        core.characterController.UpdateCameraPosition();
 
     }
 

@@ -13,4 +13,8 @@ namespace Mud {
         return getSafeElement(key);
     }
 
+    void EntityTemplateManager::addTemplate(const char *key, EntityTemplate *elem) {
+        addSafeElement(key, elem);
+    }
+
 }

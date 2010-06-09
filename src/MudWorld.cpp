@@ -6,13 +6,13 @@ namespace Mud {
 
     Core &core = Core::GetInstance();
 
-    void World::SetupWorldGraphics(char *file) {
+    void World::SetupWorldGraphics(const char *file) {
         entity = core.ogreSceneMgr->createEntity("MudWorldEntity", file);
         node = core.ogreSceneMgr->getRootSceneNode()->createChildSceneNode("MudWorldNode");
         node->attachObject(entity);
     }
 
-    void World::SetupWorldPhysics(char *file) {
+    void World::SetupWorldPhysics(const char *file) {
         Ogre::Entity *physicsEnt = core.ogreSceneMgr->createEntity("PhysicsEntity", file);
 
         size_t vertexCount, indexCount;

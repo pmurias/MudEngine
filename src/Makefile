@@ -128,6 +128,36 @@ Main.s:
 .PHONY : Main.s
 
 # target to build an object file
+MudCharacterController.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCharacterController.o
+.PHONY : MudCharacterController.o
+
+# target to preprocess a source file
+MudCharacterController.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCharacterController.i
+.PHONY : MudCharacterController.i
+
+# target to generate assembly for a file
+MudCharacterController.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCharacterController.s
+.PHONY : MudCharacterController.s
+
+# target to build an object file
+MudCharacterEntity.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCharacterEntity.o
+.PHONY : MudCharacterEntity.o
+
+# target to preprocess a source file
+MudCharacterEntity.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCharacterEntity.i
+.PHONY : MudCharacterEntity.i
+
+# target to generate assembly for a file
+MudCharacterEntity.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCharacterEntity.s
+.PHONY : MudCharacterEntity.s
+
+# target to build an object file
 MudCore.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCore.o
 .PHONY : MudCore.o
@@ -304,6 +334,12 @@ help:
 	@echo "... Main.o"
 	@echo "... Main.i"
 	@echo "... Main.s"
+	@echo "... MudCharacterController.o"
+	@echo "... MudCharacterController.i"
+	@echo "... MudCharacterController.s"
+	@echo "... MudCharacterEntity.o"
+	@echo "... MudCharacterEntity.i"
+	@echo "... MudCharacterEntity.s"
 	@echo "... MudCore.o"
 	@echo "... MudCore.i"
 	@echo "... MudCore.s"

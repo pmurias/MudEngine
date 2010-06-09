@@ -9,6 +9,8 @@ namespace Mud {
         SceneryEntityTemplate *entTemplate = 
             static_cast<SceneryEntityTemplate*>(Core::GetInstance().entityTemplateManager.getTemplate(entityTemplateName));
 
+        *(static_cast<SceneryEntityProperties *>(this)) = *(static_cast<SceneryEntityProperties*>(entTemplate));
+
         entity = Core::GetInstance().ogreSceneMgr->createEntity(name, entTemplate->meshName);
         node = Core::GetInstance().ogreSceneMgr->getRootSceneNode()->createChildSceneNode(name);
         node->attachObject(entity);
@@ -24,7 +26,6 @@ namespace Mud {
                 btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0))
                 );
 
-            ;
             btVector3 inertia(0,0,0);
 
             if (entTemplate->dynamic) {
@@ -39,7 +40,6 @@ namespace Mud {
 
             body = new btRigidBody(rigidBodyCI);
             Core::GetInstance().bulWorld->addRigidBody(body);
-
         }
 
     }

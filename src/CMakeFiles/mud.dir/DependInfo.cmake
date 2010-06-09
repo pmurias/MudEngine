@@ -5,6 +5,8 @@ SET(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/ja/projects/mud/src/Main.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/Main.o"
+  "/home/ja/projects/mud/src/MudCharacterController.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCharacterController.o"
+  "/home/ja/projects/mud/src/MudCharacterEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCharacterEntity.o"
   "/home/ja/projects/mud/src/MudCore.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCore.o"
   "/home/ja/projects/mud/src/MudEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntity.o"
   "/home/ja/projects/mud/src/MudEntityTemplate.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntityTemplate.o"

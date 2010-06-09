@@ -1,12 +1,12 @@
-#ifndef _MudSceneryEntity
-#define _MudSceneryEntity
+#ifndef _MudCharacterEntity
+#define _MudCharacterEntity
 
 #include <MudVisibleEntity.h>
-#include <MudSceneryEntityProperties.h>
+#include <MudCharacterEntityProperties.h>
 
 namespace Mud {
 
-    class SceneryEntity : public VisibleEntity, public SceneryEntityProperties {
+    class CharacterEntity : public VisibleEntity, public CharacterEntityProperties {
     public:
         void Create(const char *name, const char *entityTemplateName);
         void Destroy();
