@@ -3,16 +3,26 @@
 
 #include <MudVisibleEntity.h>
 #include <MudCharacterEntityProperties.h>
+#include <MudEnums.h>
 
 namespace Mud {
 
     class CharacterEntity : public VisibleEntity, public CharacterEntityProperties {
     public:
+        int state;
+
         void Create(const char *name, const char *entityTemplateName);
         void Destroy();
 
         void SetPosition(Ogre::Vector3 pos);
         void UpdatePosition();
+        void UpdateBehaviour();
+        void StartMovingForward();
+        void TurnLeft();
+        void TurnRight();
+        void StopMoving();
+        void StopTurning();
+
     };
 
 }

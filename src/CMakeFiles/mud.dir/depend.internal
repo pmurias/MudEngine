@@ -678,6 +678,7 @@ src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o
  /usr/include/bullet/btBulletDynamicsCommon.h
  inc/MudEntityTemplate.h
  inc/MudEnums.h
+ inc/MudSceneryEntityProperties.h
  inc/MudSceneryEntityTemplate.h
 src/CMakeFiles/mud.dir/MudUtils.o
  /home/ja/projects/mud/src/MudUtils.cpp

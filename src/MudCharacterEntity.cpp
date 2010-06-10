@@ -11,6 +11,7 @@ namespace Mud {
             static_cast<CharacterEntityTemplate*>(Core::GetInstance().entityTemplateManager.getTemplate(entityTemplateName));     
 
         *(static_cast<CharacterEntityProperties *>(this)) = *(static_cast<CharacterEntityProperties*>(entTemplate));
+        state = 0;
 
         entity = Core::GetInstance().ogreSceneMgr->createEntity(name, entTemplate->meshName);
         node = Core::GetInstance().ogreSceneMgr->getRootSceneNode()->createChildSceneNode(name);
@@ -52,6 +53,50 @@ namespace Mud {
 
     void CharacterEntity::UpdatePosition() {
         node->setPosition(Utils::BtVec3ToOgre(body->getCenterOfMassPosition()));
+    }
+
+    void CharacterEntity::UpdateBehaviour() {
+        if (state & CS_IDLE) {
+            body->setLinearVelocity(btVector3(0, body->getLinearVelocity().y(), 0));
+        }
+        if (state & CS_MOVING_FORWARD) {                
+            Ogre::Vector3 forward = node->getOrientation() * Ogre::Vector3::UNIT_Z;
+            forward *= 6;
+            forward.y = body->getLinearVelocity().y();
+            body->setLinearVelocity(Utils::OgreVec3ToBt(forward));
+        }
+
+        if (state & CS_TURNING_LEFT) {
+            Ogre::Quaternion turn = Ogre::Vector3(0,0,1).getRotationTo(Ogre::Vector3(0.1, 0, 1));
+            node->setOrientation(node->getOrientation() * turn);
+        }
+        if (state & CS_TURNING_RIGHT) {
+            Ogre::Quaternion turn = Ogre::Vector3(0,0,1).getRotationTo(Ogre::Vector3(-0.1, 0, 1));
+            node->setOrientation(node->getOrientation() * turn);
+        }
+
+    }
+
+    void CharacterEntity::StartMovingForward() {
+        state &= ~CS_IDLE;
+        state |= CS_MOVING_FORWARD;
+    }
+
+    void CharacterEntity::StopMoving() {
+        state &= ~CS_MOVING_FORWARD;
+        state |= CS_IDLE;
+    }
+
+    void CharacterEntity::TurnLeft() {
+        state |= CS_TURNING_LEFT;
+    }
+
+    void CharacterEntity::TurnRight() {
+        state |= CS_TURNING_RIGHT;
+    }
+
+    void CharacterEntity::StopTurning() {
+        state &= ~(CS_TURNING_LEFT | CS_TURNING_RIGHT);
     }
 }
 

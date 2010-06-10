@@ -677,6 +677,7 @@ src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o: /usr/include/bullet/btBulletC
 src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o: /usr/include/bullet/btBulletDynamicsCommon.h
 src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o: inc/MudEntityTemplate.h
 src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o: inc/MudEnums.h
+src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o: inc/MudSceneryEntityProperties.h
 src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o: inc/MudSceneryEntityTemplate.h
 
 src/CMakeFiles/mud.dir/MudUtils.o: src/MudUtils.cpp

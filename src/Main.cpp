@@ -27,7 +27,7 @@ int main(void) {
     chr->meshName="capsule.mesh";
     chr->mass = 10;
     chr->radius = 0.75 * 0.5;
-    chr->height = 1.2;
+    chr->height = 1.75 * 0.5;
     chr->headOffset = Ogre::Vector3(0,1,0);
     core.entityTemplateManager.addTemplate("char", chr);
 
@@ -74,23 +74,24 @@ int main(void) {
     while (run) {
         core.CaptureInput();
         if (core.oisKeyboard->isKeyDown(OIS::KC_ESCAPE)) run=false;        
-        if (core.oisKeyboard->isKeyDown(OIS::KC_W)) {
-            player->body->setLinearVelocity(btVector3(0, 0, 6));
-        } else
-        if (core.oisKeyboard->isKeyDown(OIS::KC_S)) {
-            player->body->setLinearVelocity(btVector3(0, 0, -6));
-        } else
-        if (core.oisKeyboard->isKeyDown(OIS::KC_A)) {
-            player->body->setLinearVelocity(btVector3(6, 0, 0));
-        } else
-        if (core.oisKeyboard->isKeyDown(OIS::KC_D)) {
-            player->body->setLinearVelocity(btVector3(-6, 0, 0));
+        if (core.oisKeyboard->isKeyDown(OIS::KC_UP)) {
+            player->StartMovingForward();
         } else {
-            player->body->setLinearVelocity(btVector3(0, player->body->getLinearVelocity().y(), 0));
+            player->StopMoving();
+        }
+
+        if (core.oisKeyboard->isKeyDown(OIS::KC_LEFT)) {
+            player->TurnLeft();
+        } else
+        if (core.oisKeyboard->isKeyDown(OIS::KC_RIGHT)) {
+            player->TurnRight();
+        } else {
+            player->StopTurning();
         }
 
         core.RenderOneFrame();        
 
+        player->UpdateBehaviour();
         player->UpdatePosition();
         ent->UpdatePosition();
         ent2->UpdatePosition();
