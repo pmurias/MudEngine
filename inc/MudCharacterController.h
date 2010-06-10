@@ -17,7 +17,7 @@ namespace Mud {
 
         CharacterController();
         void UpdateCameraPosition();
-
+        void HandleInput();
 
     };
 }

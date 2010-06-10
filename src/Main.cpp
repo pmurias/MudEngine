@@ -25,21 +25,23 @@ int main(void) {
 
     Mud::CharacterEntityTemplate *chr = new Mud::CharacterEntityTemplate();
     chr->meshName="capsule.mesh";
-    chr->mass = 10;
+    chr->mass = 70;
     chr->radius = 0.75 * 0.5;
     chr->height = 1.75 * 0.5;
+    chr->walkSpeed = 2.0;
+    chr->runFactor = 3.0;
     chr->headOffset = Ogre::Vector3(0,1,0);
-    core.entityTemplateManager.addTemplate("char", chr);
+    core.entityTemplateManager.AddTemplate("char", chr);
 
 
     Mud::SceneryEntityTemplate *temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
     temp->collidable = true;
     temp->dynamic = true;
-    temp->mass = 900;
+    temp->mass = 3000;
     temp->boxSize = btVector3(1,1,1);
     temp->boundingVolumeType = Mud::BVT_BOX;
-    core.entityTemplateManager.addTemplate("test", temp);
+    core.entityTemplateManager.AddTemplate("test", temp);
 
     temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
@@ -48,24 +50,34 @@ int main(void) {
     temp->mass = 0;
     temp->boxSize = btVector3(1,1,1);
     temp->boundingVolumeType = Mud::BVT_BOX;
-    core.entityTemplateManager.addTemplate("test2", temp);
+    core.entityTemplateManager.AddTemplate("test2", temp);
 
-    Mud::SceneryEntity *ent = new Mud::SceneryEntity();
-    ent->Create("Box", "test");
+    Mud::SceneryEntity *ent = new Mud::SceneryEntity("Box1", "test");
     ent->SetPosition(Ogre::Vector3(3, 1, 0));
+    core.entityManager.AddEntity(ent);
 
-    Mud::SceneryEntity *ent2 = new Mud::SceneryEntity();
-    ent2->Create("Box2", "test2"); 
-    ent2->SetPosition(Ogre::Vector3(-3, 1, 0));
+    ent = new Mud::SceneryEntity("Box2", "test");
+    ent->SetPosition(Ogre::Vector3(4, 3, 1));
+    core.entityManager.AddEntity(ent);
+    
+    ent = new Mud::SceneryEntity("Box3", "test2");
+    ent->SetPosition(Ogre::Vector3(-3, 1, 0));
+    core.entityManager.AddEntity(ent);
 
-    Mud::CharacterEntity *player = new Mud::CharacterEntity();
-    player->Create("Player", "char");
+
+    Mud::CharacterEntity *player = new Mud::CharacterEntity("NPC", "char");
+    player->SetPosition(Ogre::Vector3(0,6,6));
+    player->state |= Mud::CS_IDLE;
+    core.entityManager.AddEntity(player);
+
+    player = new Mud::CharacterEntity("Player", "char");
     player->SetPosition(Ogre::Vector3(6,6,6));
+    core.entityManager.AddEntity(player);
 
-    core.characterController.cameraDistance = 6.0;
+    core.characterController.cameraDistance = 4.0;
     core.characterController.cameraReaction = 0.1;
-    core.characterController.cameraHeight = 2.0;
-    core.characterController.character = player;    
+    core.characterController.cameraHeight = 1.2;
+    core.characterController.character = player;   
     
     bool run = true;
 
@@ -74,27 +86,11 @@ int main(void) {
     while (run) {
         core.CaptureInput();
         if (core.oisKeyboard->isKeyDown(OIS::KC_ESCAPE)) run=false;        
-        if (core.oisKeyboard->isKeyDown(OIS::KC_UP)) {
-            player->StartMovingForward();
-        } else {
-            player->StopMoving();
-        }
-
-        if (core.oisKeyboard->isKeyDown(OIS::KC_LEFT)) {
-            player->TurnLeft();
-        } else
-        if (core.oisKeyboard->isKeyDown(OIS::KC_RIGHT)) {
-            player->TurnRight();
-        } else {
-            player->StopTurning();
-        }
+        core.characterController.HandleInput();
 
         core.RenderOneFrame();        
 
-        player->UpdateBehaviour();
-        player->UpdatePosition();
-        ent->UpdatePosition();
-        ent2->UpdatePosition();
+        core.entityManager.UpdateEntities();
 
         core.characterController.UpdateCameraPosition();
 

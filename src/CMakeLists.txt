@@ -1,5 +1,5 @@
 add_definitions(-O2 -s -Wfatal-errors)
 include_directories ("${PROJECT_SOURCE_DIR}/inc" "/usr/include/bullet/")
 link_libraries(OgreMain OIS BulletCollision BulletDynamics)
-add_executable(mud MudException.cpp MudUtils.cpp MudHashmapManager.cpp MudEntity.cpp MudVisibleEntity.cpp MudSceneryEntity.cpp MudCharacterEntity.cpp MudEntityTemplate.cpp MudSceneryEntityTemplate.cpp MudEntityTemplateManager.cpp MudCharacterController.cpp MudWorld.cpp MudCore.cpp Main.cpp)
+add_executable(mud MudException.cpp MudUtils.cpp MudHashmapManager.cpp MudEntity.cpp MudVisibleEntity.cpp MudSceneryEntity.cpp MudCharacterEntity.cpp MudEntityTemplate.cpp MudSceneryEntityTemplate.cpp MudEntityTemplateManager.cpp MudEntityManager.cpp MudCharacterController.cpp MudWorld.cpp MudCore.cpp Main.cpp)
 add_custom_command(TARGET mud POST_BUILD COMMAND ./post.sh)

@@ -9,12 +9,12 @@ namespace Mud {
         managerName = "Template Manager";
     }
 
-    EntityTemplate *EntityTemplateManager::getTemplate(const char *key) {
-        return getSafeElement(key);
+    EntityTemplate *EntityTemplateManager::GetTemplate(const char *key) {
+        return GetSafeElement(key);
     }
 
-    void EntityTemplateManager::addTemplate(const char *key, EntityTemplate *elem) {
-        addSafeElement(key, elem);
+    void EntityTemplateManager::AddTemplate(const char *key, EntityTemplate *elem) {
+        AddSafeElement(key, elem);
     }
 
 }

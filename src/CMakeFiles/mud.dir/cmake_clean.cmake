@@ -9,6 +9,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/mud.dir/MudEntityTemplate.o"
   "CMakeFiles/mud.dir/MudSceneryEntityTemplate.o"
   "CMakeFiles/mud.dir/MudEntityTemplateManager.o"
+  "CMakeFiles/mud.dir/MudEntityManager.o"
   "CMakeFiles/mud.dir/MudCharacterController.o"
   "CMakeFiles/mud.dir/MudWorld.o"
   "CMakeFiles/mud.dir/MudCore.o"

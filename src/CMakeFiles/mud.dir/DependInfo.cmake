@@ -9,6 +9,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/ja/projects/mud/src/MudCharacterEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCharacterEntity.o"
   "/home/ja/projects/mud/src/MudCore.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCore.o"
   "/home/ja/projects/mud/src/MudEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntity.o"
+  "/home/ja/projects/mud/src/MudEntityManager.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntityManager.o"
   "/home/ja/projects/mud/src/MudEntityTemplate.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntityTemplate.o"
   "/home/ja/projects/mud/src/MudEntityTemplateManager.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntityTemplateManager.o"
   "/home/ja/projects/mud/src/MudException.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudException.o"

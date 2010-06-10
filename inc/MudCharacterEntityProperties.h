@@ -11,7 +11,10 @@ namespace Mud {
         float radius;
         float height;
 
-        Ogre::Vector3 headOffset;        
+        float walkSpeed;
+        float runFactor;
+
+        Ogre::Vector3 headOffset;
     };
 }
 

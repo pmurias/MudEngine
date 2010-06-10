@@ -188,6 +188,21 @@ MudEntity.s:
 .PHONY : MudEntity.s
 
 # target to build an object file
+MudEntityManager.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityManager.o
+.PHONY : MudEntityManager.o
+
+# target to preprocess a source file
+MudEntityManager.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityManager.i
+.PHONY : MudEntityManager.i
+
+# target to generate assembly for a file
+MudEntityManager.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityManager.s
+.PHONY : MudEntityManager.s
+
+# target to build an object file
 MudEntityTemplate.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudEntityTemplate.o
 .PHONY : MudEntityTemplate.o
@@ -346,6 +361,9 @@ help:
 	@echo "... MudEntity.o"
 	@echo "... MudEntity.i"
 	@echo "... MudEntity.s"
+	@echo "... MudEntityManager.o"
+	@echo "... MudEntityManager.i"
+	@echo "... MudEntityManager.s"
 	@echo "... MudEntityTemplate.o"
 	@echo "... MudEntityTemplate.i"
 	@echo "... MudEntityTemplate.s"

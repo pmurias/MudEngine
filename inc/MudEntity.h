@@ -9,8 +9,10 @@ namespace Mud {
     public:
         std::string name;
 
-        virtual void Create(const char *name, const char *entityTemplateName);        
+        Entity(const char *entName, const char *entityTemplateName);        
         virtual void Destroy();
+
+        virtual void Update();
     };
 
 }

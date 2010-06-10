@@ -13,7 +13,7 @@ namespace Mud {
     class SceneryEntityProperties {
     public:
 
-        bool collidable;        
+        bool collidable;
         bool dynamic;
         float mass;
         BoundingVolumeType boundingVolumeType;

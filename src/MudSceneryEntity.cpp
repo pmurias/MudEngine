@@ -5,9 +5,10 @@
 
 namespace Mud {
 
-    void SceneryEntity::Create(const char *name, const char *entityTemplateName) {
+    SceneryEntity::SceneryEntity(const char *name, const char *entityTemplateName) 
+        : VisibleEntity(name, entityTemplateName) {
         SceneryEntityTemplate *entTemplate = 
-            static_cast<SceneryEntityTemplate*>(Core::GetInstance().entityTemplateManager.getTemplate(entityTemplateName));
+            static_cast<SceneryEntityTemplate*>(Core::GetInstance().entityTemplateManager.GetTemplate(entityTemplateName));
 
         *(static_cast<SceneryEntityProperties *>(this)) = *(static_cast<SceneryEntityProperties*>(entTemplate));
 
@@ -45,6 +46,10 @@ namespace Mud {
     }
 
     void SceneryEntity::Destroy() {
+    }
+
+    void SceneryEntity::Update() {
+        UpdatePosition();
     }
 
     void SceneryEntity::SetPosition(Ogre::Vector3 pos) {

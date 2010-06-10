@@ -11,8 +11,8 @@ namespace Mud {
 
         EntityTemplateManager();
 
-        EntityTemplate *getTemplate(const char *key);
-        void addTemplate(const char *key, EntityTemplate *elem);
+        EntityTemplate *GetTemplate(const char *key);
+        void AddTemplate(const char *key, EntityTemplate *elem);
     };
 }
 

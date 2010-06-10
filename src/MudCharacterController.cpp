@@ -25,9 +25,29 @@ namespace Mud {
 
             Core::GetInstance().ogreCamera->lookAt(character->node->getPosition() + character->headOffset);
         }
-            
+    }
 
+    void CharacterController::HandleInput() {
+        if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_UP)) {
+            character->StartMovingForward();
+        } else {
+            character->StopMoving();
+        }
 
+        if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_LEFT)) {
+            character->TurnLeft();
+        } else
+        if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_RIGHT)) {
+            character->TurnRight();
+        } else {
+            character->StopTurning();
+        }
+
+        if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_LSHIFT)) {
+            character->Run();
+        } else {
+            character->Walk();
+        }
     }
 
 }

@@ -2,10 +2,14 @@
 
 namespace Mud {
 
-    void Entity::Create(const char *name, const char *entityTemplateName) {
+    Entity::Entity(const char *entName, const char *entityTemplateName) {
+        name = entName;
     }
 
     void Entity::Destroy() {
+    }
+
+    void Entity::Update() {
     }
 
 }

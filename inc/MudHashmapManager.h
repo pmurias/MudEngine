@@ -15,11 +15,11 @@ namespace Mud {
         Hashmap map;
         std::string managerName;
 
-        T getElement(const char *key) {        
+        T GetElement(const char *key) {        
             return map[key];
         }
 
-        T getSafeElement(const char *key) {
+        T GetSafeElement(const char *key) {
             typename Hashmap::iterator findResult =
                 map.find(key);
             if (findResult == map.end()) {
@@ -29,16 +29,16 @@ namespace Mud {
             }
         }
 
-        bool findElement(const char *key) {
+        bool FindElement(const char *key) {
             return (map.find(key) != map.end());
         }
 
-        void addElement(const char *key, T elem) {
+        void AddElement(const char *key, T elem) {
             map[key] = elem;
         }
 
-        void addSafeElement(const char *key, T elem) {
-            if (findElement(key)) {
+        void AddSafeElement(const char *key, T elem) {
+            if (FindElement(key)) {
                 throw new Exception("%s already has key \"%s\".", managerName.c_str(), key);
             } else {
                 map[key]=elem;

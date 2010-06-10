@@ -2,7 +2,8 @@
 
 namespace Mud {
 
-    void VisibleEntity::Create(const char *name, const char *entityTemplateName) {
+    VisibleEntity::VisibleEntity(const char *name, const char *entityTemplateName)
+        : Entity(name, entityTemplateName) {
 
     }
 
@@ -15,6 +16,9 @@ namespace Mud {
     }
 
     void VisibleEntity::UpdatePosition() {
+    }
+
+    void VisibleEntity::Update() {
     }
 
 }

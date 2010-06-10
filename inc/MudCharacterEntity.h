@@ -11,17 +11,22 @@ namespace Mud {
     public:
         int state;
 
-        void Create(const char *name, const char *entityTemplateName);
+        CharacterEntity(const char *name, const char *entityTemplateName);
         void Destroy();
+
+        void Update();
 
         void SetPosition(Ogre::Vector3 pos);
         void UpdatePosition();
         void UpdateBehaviour();
+
         void StartMovingForward();
         void TurnLeft();
         void TurnRight();
         void StopMoving();
         void StopTurning();
+        void Run();
+        void Walk();
 
     };
 

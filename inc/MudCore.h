@@ -7,6 +7,7 @@
 
 #include <MudWorld.h>
 #include <MudEntityTemplateManager.h>
+#include <MudEntityManager.h>
 #include <MudCharacterController.h>
 
 namespace Mud {
@@ -33,8 +34,9 @@ namespace Mud {
         float timeStep;
 
         World world;
+        EntityManager entityManager;
         EntityTemplateManager entityTemplateManager;
-
+        
         CharacterController characterController;
 
         static Core &GetInstance();

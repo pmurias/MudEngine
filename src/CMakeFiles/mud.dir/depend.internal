@@ -104,6 +104,8 @@ src/CMakeFiles/mud.dir/Main.o
  inc/MudCharacterEntityProperties.h
  inc/MudCharacterEntityTemplate.h
  inc/MudCore.h
+ inc/MudEntity.h
+ inc/MudEntityManager.h
  inc/MudEntityTemplate.h
  inc/MudEntityTemplateManager.h
  inc/MudEnums.h
@@ -327,6 +329,8 @@ src/CMakeFiles/mud.dir/MudCharacterEntity.o
  inc/MudCharacterEntityProperties.h
  inc/MudCharacterEntityTemplate.h
  inc/MudCore.h
+ inc/MudEntity.h
+ inc/MudEntityManager.h
  inc/MudEntityTemplate.h
  inc/MudEntityTemplateManager.h
  inc/MudEnums.h
@@ -447,6 +451,12 @@ src/CMakeFiles/mud.dir/MudCore.o
 src/CMakeFiles/mud.dir/MudEntity.o
  /home/ja/projects/mud/src/MudEntity.cpp
  inc/MudEntity.h
+src/CMakeFiles/mud.dir/MudEntityManager.o
+ /home/ja/projects/mud/src/MudEntityManager.cpp
+ inc/MudEntity.h
+ inc/MudEntityManager.h
+ inc/MudException.h
+ inc/MudHashmapManager.h
 src/CMakeFiles/mud.dir/MudEntityTemplate.o
  /home/ja/projects/mud/src/MudEntityTemplate.cpp
  inc/MudEntityTemplate.h
@@ -567,6 +577,8 @@ src/CMakeFiles/mud.dir/MudSceneryEntity.o
  inc/MudCharacterEntity.h
  inc/MudCharacterEntityProperties.h
  inc/MudCore.h
+ inc/MudEntity.h
+ inc/MudEntityManager.h
  inc/MudEntityTemplate.h
  inc/MudEntityTemplateManager.h
  inc/MudEnums.h

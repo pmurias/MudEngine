@@ -6,9 +6,10 @@
 
 namespace Mud {
 
-    void CharacterEntity::Create(const char *name, const char *entityTemplateName) {
+    CharacterEntity::CharacterEntity(const char *name, const char *entityTemplateName) 
+        : VisibleEntity(name, entityTemplateName) {
         CharacterEntityTemplate *entTemplate = 
-            static_cast<CharacterEntityTemplate*>(Core::GetInstance().entityTemplateManager.getTemplate(entityTemplateName));     
+            static_cast<CharacterEntityTemplate*>(Core::GetInstance().entityTemplateManager.GetTemplate(entityTemplateName));     
 
         *(static_cast<CharacterEntityProperties *>(this)) = *(static_cast<CharacterEntityProperties*>(entTemplate));
         state = 0;
@@ -46,6 +47,11 @@ namespace Mud {
     void CharacterEntity::Destroy() {
     }
 
+    void CharacterEntity::Update() {
+        UpdateBehaviour();
+        UpdatePosition();
+    }
+
     void CharacterEntity::SetPosition(Ogre::Vector3 pos) {
         node->setPosition(pos);
         body->translate(Utils::OgreVec3ToBt(pos) - body->getCenterOfMassPosition());
@@ -61,7 +67,7 @@ namespace Mud {
         }
         if (state & CS_MOVING_FORWARD) {                
             Ogre::Vector3 forward = node->getOrientation() * Ogre::Vector3::UNIT_Z;
-            forward *= 6;
+            forward *= walkSpeed * (state & CS_RUNNING ? runFactor : 1.0);
             forward.y = body->getLinearVelocity().y();
             body->setLinearVelocity(Utils::OgreVec3ToBt(forward));
         }
@@ -97,6 +103,16 @@ namespace Mud {
 
     void CharacterEntity::StopTurning() {
         state &= ~(CS_TURNING_LEFT | CS_TURNING_RIGHT);
+    }
+
+    void CharacterEntity::Run() {
+        state |= CS_RUNNING;
+        state &= ~CS_WALKING;
+    }
+
+    void CharacterEntity::Walk() {
+        state |= CS_WALKING;
+        state &= ~CS_RUNNING;
     }
 }
 
