@@ -6,13 +6,14 @@
 #include <OGRE/Ogre.h>
 
 #include <MudEntityTemplate.h>
+#include <MudVisibleEntityProperties.h>
 #include <MudEnums.h>
 
 namespace Mud {
 
-    class SceneryEntityProperties {
+    class SceneryEntityProperties : public VisibleEntityProperties {
     public:
-
+        
         bool collidable;
         bool dynamic;
         float mass;
@@ -20,6 +21,8 @@ namespace Mud {
         btVector3 boxSize;
         float radius;
         Ogre::Vector2 capsuleSize;
+
+        SceneryEntityProperties();
     };
 }
 

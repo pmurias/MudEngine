@@ -1,14 +1,16 @@
 #ifndef _MudVisibleEntity
 #define _MudVisibleEntity
 
+#include <MudEntity.h>
+#include <MudVisibleEntityProperties.h>
+
 #include <OGRE/Ogre.h>
 #include <btBulletDynamicsCommon.h>
 
-#include <MudEntity.h>
 
 namespace Mud {
 
-    class VisibleEntity : public Entity {
+    class VisibleEntity : public Entity, public VisibleEntityProperties {
     public:
         Ogre::Entity *entity;
         Ogre::SceneNode *node;

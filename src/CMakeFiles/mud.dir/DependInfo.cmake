@@ -7,6 +7,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/ja/projects/mud/src/Main.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/Main.o"
   "/home/ja/projects/mud/src/MudCharacterController.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCharacterController.o"
   "/home/ja/projects/mud/src/MudCharacterEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCharacterEntity.o"
+  "/home/ja/projects/mud/src/MudConsole.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudConsole.o"
   "/home/ja/projects/mud/src/MudCore.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudCore.o"
   "/home/ja/projects/mud/src/MudEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntity.o"
   "/home/ja/projects/mud/src/MudEntityManager.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudEntityManager.o"
@@ -15,9 +16,13 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/ja/projects/mud/src/MudException.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudException.o"
   "/home/ja/projects/mud/src/MudHashmapManager.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudHashmapManager.o"
   "/home/ja/projects/mud/src/MudSceneryEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudSceneryEntity.o"
+  "/home/ja/projects/mud/src/MudSceneryEntityProperties.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudSceneryEntityProperties.o"
   "/home/ja/projects/mud/src/MudSceneryEntityTemplate.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o"
+  "/home/ja/projects/mud/src/MudTextBox.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudTextBox.o"
+  "/home/ja/projects/mud/src/MudTextBoxManager.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudTextBoxManager.o"
   "/home/ja/projects/mud/src/MudUtils.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudUtils.o"
   "/home/ja/projects/mud/src/MudVisibleEntity.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudVisibleEntity.o"
+  "/home/ja/projects/mud/src/MudVisibleEntityProperties.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudVisibleEntityProperties.o"
   "/home/ja/projects/mud/src/MudWorld.cpp" "/home/ja/projects/mud/src/CMakeFiles/mud.dir/MudWorld.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")

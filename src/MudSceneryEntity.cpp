@@ -16,11 +16,11 @@ namespace Mud {
         node = Core::GetInstance().ogreSceneMgr->getRootSceneNode()->createChildSceneNode(name);
         node->attachObject(entity);
 
-        if (entTemplate->collidable) {
-            if (entTemplate->boundingVolumeType == BVT_BOX) {
-                collisionShape = new btBoxShape(entTemplate->boxSize);
-            } else if (entTemplate->boundingVolumeType == BVT_SPHERE) {
-                collisionShape = new btSphereShape(entTemplate->radius);
+        if (collidable) {
+            if (boundingVolumeType == BVT_BOX) {
+                collisionShape = new btBoxShape(boxSize);
+            } else if (boundingVolumeType == BVT_SPHERE) {
+                collisionShape = new btSphereShape(radius);
             }
 
             btDefaultMotionState *motionState = new btDefaultMotionState(
@@ -28,12 +28,9 @@ namespace Mud {
                 );
 
             btVector3 inertia(0,0,0);
-
-            if (entTemplate->dynamic) {
-                collisionShape->calculateLocalInertia(entTemplate->mass, inertia);
-            }
+            collisionShape->calculateLocalInertia(mass, inertia);
             btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(
-                    entTemplate->mass, 
+                    mass, 
                     motionState, 
                     collisionShape, 
                     inertia

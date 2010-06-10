@@ -22,6 +22,22 @@ namespace Mud {
         static btQuaternion OgreQuatToBt(Ogre::Quaternion q);
         static Ogre::Quaternion BtQuatToOgre(btQuaternion q);
 
+        class ClosestNotMeRayResultCallback : public btCollisionWorld::ClosestRayResultCallback
+        {
+        public:
+            ClosestNotMeRayResultCallback (btCollisionObject* me) : 
+                btCollisionWorld::ClosestRayResultCallback(btVector3(0.0, 0.0, 0.0), btVector3(0.0, 0.0, 0.0)) {
+                    m_me = me;
+            }
+ 
+            virtual btScalar addSingleResult(btCollisionWorld::LocalRayResult& rayResult,bool normalInWorldSpace) {
+                if (rayResult.m_collisionObject == m_me)
+                    return 1.0;
+                return ClosestRayResultCallback::addSingleResult (rayResult, normalInWorldSpace);
+            }
+        protected:
+            btCollisionObject* m_me;
+        };
     };
 }
 

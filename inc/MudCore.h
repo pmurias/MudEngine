@@ -8,6 +8,8 @@
 #include <MudWorld.h>
 #include <MudEntityTemplateManager.h>
 #include <MudEntityManager.h>
+#include <MudTextBoxManager.h>
+#include <MudConsole.h>
 #include <MudCharacterController.h>
 
 namespace Mud {
@@ -36,6 +38,8 @@ namespace Mud {
         World world;
         EntityManager entityManager;
         EntityTemplateManager entityTemplateManager;
+        TextBoxManager textBoxManager;
+        Console console;
         
         CharacterController characterController;
 

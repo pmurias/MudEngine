@@ -62,13 +62,15 @@ namespace Mud {
     }
 
     void CharacterEntity::UpdateBehaviour() {
+
         if (state & CS_IDLE) {
             body->setLinearVelocity(btVector3(0, body->getLinearVelocity().y(), 0));
         }
         if (state & CS_MOVING_FORWARD) {                
             Ogre::Vector3 forward = node->getOrientation() * Ogre::Vector3::UNIT_Z;
             forward *= walkSpeed * (state & CS_RUNNING ? runFactor : 1.0);
-            forward.y = body->getLinearVelocity().y();
+            float vely = body->getLinearVelocity().y();                
+            forward.y = (vely < 0.0 ? vely : 0.0);
             body->setLinearVelocity(Utils::OgreVec3ToBt(forward));
         }
 
@@ -113,6 +115,16 @@ namespace Mud {
     void CharacterEntity::Walk() {
         state |= CS_WALKING;
         state &= ~CS_RUNNING;
+    }
+
+    bool CharacterEntity::IsOnGround() {
+        btVector3 rayBegin = Utils::OgreVec3ToBt(node->getPosition());
+        btVector3 rayEnd = Utils::OgreVec3ToBt(node->getPosition() - Ogre::Vector3(0, height * 1.05, 0));
+        Utils::ClosestNotMeRayResultCallback rayCallback = 
+            Utils::ClosestNotMeRayResultCallback(body);
+        Core::GetInstance().bulWorld->rayTest(rayBegin, rayEnd, rayCallback);
+
+        return rayCallback.hasHit();
     }
 }
 

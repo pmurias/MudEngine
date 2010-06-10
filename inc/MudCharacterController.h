@@ -11,6 +11,7 @@ namespace Mud {
         CharacterEntity *character;
 
         Ogre::Vector3 desiredCameraPosition;    
+        Ogre::Vector3 cameraPositionNoCollision;
         float cameraDistance;
         float cameraReaction;
         float cameraHeight;

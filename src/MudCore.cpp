@@ -83,7 +83,7 @@ namespace Mud {
             bulPhysicsSolver, 
             bulCollisionConfiguration
             );
-        bulWorld->setGravity(btVector3(0, -10, 0));
+        bulWorld->setGravity(btVector3(0, -20, 0));
     }
 
     void Core::DestroyBullet() {

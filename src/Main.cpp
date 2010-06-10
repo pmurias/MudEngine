@@ -11,6 +11,9 @@ int main(void) {
     core.InitOgre();
     core.InitBullet();
 
+    core.textBoxManager.Init();
+    core.console.CreateLines(20, "BlueHigh", "16", Ogre::ColourValue(1.0, 0.0, 0.0));
+
     core.world.SetupWorldGraphics("testLevel.mesh");
     core.world.SetupWorldPhysics("testLevel.mesh");
     core.ogreCamera->setPosition(Ogre::Vector3(-15,20,-15));
@@ -21,7 +24,13 @@ int main(void) {
     light->setType(Ogre::Light::LT_DIRECTIONAL);
     light->setDirection(Ogre::Vector3(0.5,-1,1));
 
-    core.ogreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE);
+    light = core.ogreSceneMgr->createLight("Sun2");
+    light->setType(Ogre::Light::LT_DIRECTIONAL);
+    light->setDiffuseColour(Ogre::ColourValue(0.2, 0.3, 0.3));
+    light->setDirection(Ogre::Vector3(-1.0,-1,-0.7));
+
+    core.ogreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+    core.ogreSceneMgr->setAmbientLight(Ogre::ColourValue(0.0,0.0,0.0));
 
     Mud::CharacterEntityTemplate *chr = new Mud::CharacterEntityTemplate();
     chr->meshName="capsule.mesh";
@@ -30,15 +39,16 @@ int main(void) {
     chr->height = 1.75 * 0.5;
     chr->walkSpeed = 2.0;
     chr->runFactor = 3.0;
-    chr->headOffset = Ogre::Vector3(0,1,0);
+    chr->headOffset = Ogre::Vector3(0,0.7,0);
     core.entityTemplateManager.AddTemplate("char", chr);
 
 
     Mud::SceneryEntityTemplate *temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
+    temp->displayName = "Crate";
     temp->collidable = true;
     temp->dynamic = true;
-    temp->mass = 3000;
+    temp->mass = 300;
     temp->boxSize = btVector3(1,1,1);
     temp->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.AddTemplate("test", temp);
@@ -52,7 +62,7 @@ int main(void) {
     temp->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.AddTemplate("test2", temp);
 
-    Mud::SceneryEntity *ent = new Mud::SceneryEntity("Box1", "test");
+    Mud::SceneryEntity *ent = new Mud::SceneryEntity("Box1", "test2");
     ent->SetPosition(Ogre::Vector3(3, 1, 0));
     core.entityManager.AddEntity(ent);
 
@@ -60,14 +70,14 @@ int main(void) {
     ent->SetPosition(Ogre::Vector3(4, 3, 1));
     core.entityManager.AddEntity(ent);
     
-    ent = new Mud::SceneryEntity("Box3", "test2");
+    ent = new Mud::SceneryEntity("Box3", "test");
     ent->SetPosition(Ogre::Vector3(-3, 1, 0));
     core.entityManager.AddEntity(ent);
 
 
     Mud::CharacterEntity *player = new Mud::CharacterEntity("NPC", "char");
     player->SetPosition(Ogre::Vector3(0,6,6));
-    player->state |= Mud::CS_IDLE;
+    player->state |= Mud::CS_IDLE;    
     core.entityManager.AddEntity(player);
 
     player = new Mud::CharacterEntity("Player", "char");
@@ -89,6 +99,12 @@ int main(void) {
         core.characterController.HandleInput();
 
         core.RenderOneFrame();        
+
+        if (core.characterController.character->IsOnGround()) {
+            core.console.Print("Character on Ground");
+        } else {
+            core.console.Print("Char in the sky");
+        }
 
         core.entityManager.UpdateEntities();
 

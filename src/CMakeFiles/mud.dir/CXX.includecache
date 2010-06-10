@@ -20,6 +20,16 @@ MudCharacterEntity.h
 MudUtils.h
 -
 
+/home/ja/projects/mud/src/MudCharacterController.cpp
+MudCharacterController.h
+-
+MudCore.h
+-
+MudException.h
+-
+MudUtils.h
+-
+
 /home/ja/projects/mud/src/MudCharacterEntity.cpp
 MudCharacterEntity.h
 -
@@ -32,14 +42,42 @@ MudCore.h
 MudUtils.h
 -
 
-/home/ja/projects/mud/src/MudEntityManager.cpp
-MudEntityManager.h
+/home/ja/projects/mud/src/MudConsole.cpp
+MudConsole.h
+-
+MudCore.h
+-
+
+/home/ja/projects/mud/src/MudCore.cpp
+MudCore.h
+-
+MudException.h
 -
 
 /home/ja/projects/mud/src/MudSceneryEntity.cpp
 MudSceneryEntity.h
 -
 MudSceneryEntityTemplate.h
+-
+MudCore.h
+-
+MudUtils.h
+-
+
+/home/ja/projects/mud/src/MudSceneryEntityProperties.cpp
+MudSceneryEntityProperties.h
+-
+
+/home/ja/projects/mud/src/MudSceneryEntityTemplate.cpp
+MudSceneryEntityTemplate.h
+-
+
+/home/ja/projects/mud/src/MudVisibleEntityProperties.cpp
+MudVisibleEntityProperties.h
+-
+
+/home/ja/projects/mud/src/MudWorld.cpp
+MudWorld.h
 -
 MudCore.h
 -
@@ -895,6 +933,8 @@ MudEnums.h
 -
 
 inc/MudCharacterEntityProperties.h
+MudVisibleEntityProperties.h
+-
 OGRE/Ogre.h
 -
 
@@ -912,6 +952,16 @@ MudCharacterEntityProperties.h
 MudEnums.h
 -
 
+inc/MudConsole.h
+MudTextBox.h
+-
+vector
+-
+cstdio
+-
+cstdarg
+-
+
 inc/MudCore.h
 OGRE/Ogre.h
 -
@@ -924,6 +974,10 @@ MudWorld.h
 MudEntityTemplateManager.h
 -
 MudEntityManager.h
+-
+MudTextBoxManager.h
+-
+MudConsole.h
 -
 MudCharacterController.h
 -
@@ -983,6 +1037,8 @@ OGRE/Ogre.h
 -
 MudEntityTemplate.h
 -
+MudVisibleEntityProperties.h
+-
 MudEnums.h
 -
 
@@ -1000,6 +1056,18 @@ MudSceneryEntityProperties.h
 MudEnums.h
 -
 
+inc/MudTextBox.h
+OGRE/Ogre.h
+-
+
+inc/MudTextBoxManager.h
+MudTextBox.h
+-
+MudHashmapManager.h
+-
+OGRE/Ogre.h
+-
+
 inc/MudUtils.h
 OGRE/Ogre.h
 -
@@ -1007,11 +1075,17 @@ btBulletDynamicsCommon.h
 -
 
 inc/MudVisibleEntity.h
+MudEntity.h
+-
+MudVisibleEntityProperties.h
+-
 OGRE/Ogre.h
 -
 btBulletDynamicsCommon.h
 -
-MudEntity.h
+
+inc/MudVisibleEntityProperties.h
+string
 -
 
 inc/MudWorld.h

@@ -158,6 +158,21 @@ MudCharacterEntity.s:
 .PHONY : MudCharacterEntity.s
 
 # target to build an object file
+MudConsole.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudConsole.o
+.PHONY : MudConsole.o
+
+# target to preprocess a source file
+MudConsole.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudConsole.i
+.PHONY : MudConsole.i
+
+# target to generate assembly for a file
+MudConsole.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudConsole.s
+.PHONY : MudConsole.s
+
+# target to build an object file
 MudCore.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCore.o
 .PHONY : MudCore.o
@@ -278,6 +293,21 @@ MudSceneryEntity.s:
 .PHONY : MudSceneryEntity.s
 
 # target to build an object file
+MudSceneryEntityProperties.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityProperties.o
+.PHONY : MudSceneryEntityProperties.o
+
+# target to preprocess a source file
+MudSceneryEntityProperties.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityProperties.i
+.PHONY : MudSceneryEntityProperties.i
+
+# target to generate assembly for a file
+MudSceneryEntityProperties.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityProperties.s
+.PHONY : MudSceneryEntityProperties.s
+
+# target to build an object file
 MudSceneryEntityTemplate.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.o
 .PHONY : MudSceneryEntityTemplate.o
@@ -291,6 +321,36 @@ MudSceneryEntityTemplate.i:
 MudSceneryEntityTemplate.s:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudSceneryEntityTemplate.s
 .PHONY : MudSceneryEntityTemplate.s
+
+# target to build an object file
+MudTextBox.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudTextBox.o
+.PHONY : MudTextBox.o
+
+# target to preprocess a source file
+MudTextBox.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudTextBox.i
+.PHONY : MudTextBox.i
+
+# target to generate assembly for a file
+MudTextBox.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudTextBox.s
+.PHONY : MudTextBox.s
+
+# target to build an object file
+MudTextBoxManager.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudTextBoxManager.o
+.PHONY : MudTextBoxManager.o
+
+# target to preprocess a source file
+MudTextBoxManager.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudTextBoxManager.i
+.PHONY : MudTextBoxManager.i
+
+# target to generate assembly for a file
+MudTextBoxManager.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudTextBoxManager.s
+.PHONY : MudTextBoxManager.s
 
 # target to build an object file
 MudUtils.o:
@@ -321,6 +381,21 @@ MudVisibleEntity.i:
 MudVisibleEntity.s:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntity.s
 .PHONY : MudVisibleEntity.s
+
+# target to build an object file
+MudVisibleEntityProperties.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntityProperties.o
+.PHONY : MudVisibleEntityProperties.o
+
+# target to preprocess a source file
+MudVisibleEntityProperties.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntityProperties.i
+.PHONY : MudVisibleEntityProperties.i
+
+# target to generate assembly for a file
+MudVisibleEntityProperties.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudVisibleEntityProperties.s
+.PHONY : MudVisibleEntityProperties.s
 
 # target to build an object file
 MudWorld.o:
@@ -355,6 +430,9 @@ help:
 	@echo "... MudCharacterEntity.o"
 	@echo "... MudCharacterEntity.i"
 	@echo "... MudCharacterEntity.s"
+	@echo "... MudConsole.o"
+	@echo "... MudConsole.i"
+	@echo "... MudConsole.s"
 	@echo "... MudCore.o"
 	@echo "... MudCore.i"
 	@echo "... MudCore.s"
@@ -379,15 +457,27 @@ help:
 	@echo "... MudSceneryEntity.o"
 	@echo "... MudSceneryEntity.i"
 	@echo "... MudSceneryEntity.s"
+	@echo "... MudSceneryEntityProperties.o"
+	@echo "... MudSceneryEntityProperties.i"
+	@echo "... MudSceneryEntityProperties.s"
 	@echo "... MudSceneryEntityTemplate.o"
 	@echo "... MudSceneryEntityTemplate.i"
 	@echo "... MudSceneryEntityTemplate.s"
+	@echo "... MudTextBox.o"
+	@echo "... MudTextBox.i"
+	@echo "... MudTextBox.s"
+	@echo "... MudTextBoxManager.o"
+	@echo "... MudTextBoxManager.i"
+	@echo "... MudTextBoxManager.s"
 	@echo "... MudUtils.o"
 	@echo "... MudUtils.i"
 	@echo "... MudUtils.s"
 	@echo "... MudVisibleEntity.o"
 	@echo "... MudVisibleEntity.i"
 	@echo "... MudVisibleEntity.s"
+	@echo "... MudVisibleEntityProperties.o"
+	@echo "... MudVisibleEntityProperties.i"
+	@echo "... MudVisibleEntityProperties.s"
 	@echo "... MudWorld.o"
 	@echo "... MudWorld.i"
 	@echo "... MudWorld.s"

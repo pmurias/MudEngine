@@ -28,6 +28,8 @@ namespace Mud {
         void Run();
         void Walk();
 
+        bool IsOnGround();
+
     };
 
 }
