@@ -98,12 +98,15 @@ int main(void) {
 
     core.ogreViewport->setBackgroundColour(Ogre::ColourValue(0.1, 0.0, 0.0));
 
+    Mud::TextBox *tbFps = core.textBoxManager.CreateTextBox("tbFps", 750, 10, 100, 30, "BlueHigh", "16", Ogre::ColourValue(0.0, 1.0, 1.0));
+
     while (run) {
         core.CaptureInput();
         if (core.oisKeyboard->isKeyDown(OIS::KC_ESCAPE)) run=false;        
         core.characterController.HandleInput();
         core.characterController.HandleFocus();
 
+        tbFps->SetFormattedCaption("FPS:%d", (int)(core.ogreWindow->getAverageFPS()));
         core.RenderOneFrame();        
 
         if (core.characterController.focusedEntity) {

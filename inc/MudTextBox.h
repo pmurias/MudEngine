@@ -2,6 +2,8 @@
 #define _MudTextBox
 
 #include <OGRE/Ogre.h>
+#include <cstdio>
+#include <cstdarg>
 
 namespace Mud {
 
@@ -23,6 +25,7 @@ namespace Mud {
 
         void SetPosition(float x, float y);
         void SetCaption(const char *str);
+        void SetFormattedCaption(const char *fmt, ...);
         const char *GetCaption();
         void Show();
         void Hide();

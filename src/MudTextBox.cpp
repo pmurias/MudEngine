@@ -32,6 +32,19 @@ namespace Mud {
         textArea->setCaption(str);
     }
 
+    void TextBox::SetFormattedCaption(const char *fmt, ...) {
+        char out[4096];
+        va_list args;
+        if (fmt == NULL)
+            out[0] = '\0';
+        else {
+            va_start(args, fmt);
+            vsprintf(out, fmt, args);
+            va_end(args);
+        }
+        textArea->setCaption(out);
+    }
+
     const char *TextBox::GetCaption() {
         return textArea->getCaption().asUTF8_c_str();
     }
