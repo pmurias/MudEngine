@@ -2,8 +2,7 @@
 
 namespace Mud {
 
-    SceneryEntityProperties::SceneryEntityProperties() 
-        : VisibleEntityProperties() {
+    SceneryEntityProperties::SceneryEntityProperties() {
         collidable = false;
         dynamic = false;
     }

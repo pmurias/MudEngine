@@ -9,6 +9,7 @@ namespace Mud {
     class CharacterController {
     public:
         CharacterEntity *character;
+        VisibleEntity *focusedEntity;
 
         Ogre::Vector3 desiredCameraPosition;    
         Ogre::Vector3 cameraPositionNoCollision;
@@ -19,6 +20,8 @@ namespace Mud {
         CharacterController();
         void UpdateCameraPosition();
         void HandleInput();
+
+        void HandleFocus();
 
     };
 }

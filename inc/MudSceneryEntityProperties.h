@@ -6,12 +6,11 @@
 #include <OGRE/Ogre.h>
 
 #include <MudEntityTemplate.h>
-#include <MudVisibleEntityProperties.h>
 #include <MudEnums.h>
 
 namespace Mud {
 
-    class SceneryEntityProperties : public VisibleEntityProperties {
+    class SceneryEntityProperties {
     public:
         
         bool collidable;

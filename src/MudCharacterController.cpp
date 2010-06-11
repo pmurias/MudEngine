@@ -7,6 +7,7 @@ namespace Mud {
 
     CharacterController::CharacterController() {
         character = NULL;
+        focusedEntity = NULL;
     }
 
     void CharacterController::UpdateCameraPosition() {
@@ -65,5 +66,32 @@ namespace Mud {
             character->Walk();
         }
     }
+
+    void CharacterController::HandleFocus() {
+        btVector3 rayBegin = Utils::OgreVec3ToBt(character->node->getPosition());
+        btVector3 rayEnd = Utils::OgreVec3ToBt(
+            character->node->getPosition() + character->node->getOrientation() * Ogre::Vector3::UNIT_Z * 1.5
+        );
+
+        Utils::ClosestNotMeRayResultCallback rayCallback = 
+            Utils::ClosestNotMeRayResultCallback(character->body);
+        Core::GetInstance().bulWorld->rayTest(rayBegin, rayEnd, rayCallback);
+
+        focusedEntity = NULL;
+
+        ///TODO: wiecej promieni!
+
+        if (rayCallback.hasHit()) {
+            VisibleEntity *focused = static_cast<VisibleEntity *>(rayCallback.m_collisionObject->getUserPointer());
+            if (focused) {
+                if (focused->observable) {
+                    focusedEntity = focused;
+                }
+            }
+        }
+
+    }
+
+    
 
 }

@@ -5,13 +5,13 @@
 #include <btBulletDynamicsCommon.h>
 #include <OGRE/Ogre.h>
 
-#include <MudEntityTemplate.h>
+#include <MudVisibleEntityTemplate.h>
 #include <MudSceneryEntityProperties.h>
 #include <MudEnums.h>
 
 namespace Mud {
 
-    class SceneryEntityTemplate : public EntityTemplate, public SceneryEntityProperties {
+    class SceneryEntityTemplate : public VisibleEntityTemplate, public SceneryEntityProperties {
     public:
         std::string meshName;
 

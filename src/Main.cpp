@@ -34,6 +34,8 @@ int main(void) {
 
     Mud::CharacterEntityTemplate *chr = new Mud::CharacterEntityTemplate();
     chr->meshName="capsule.mesh";
+    chr->displayName = "Capsule";
+    chr->observable = true;
     chr->mass = 70;
     chr->radius = 0.75 * 0.5;
     chr->height = 1.75 * 0.5;
@@ -46,6 +48,7 @@ int main(void) {
     Mud::SceneryEntityTemplate *temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
     temp->displayName = "Crate";
+    temp->observable = true;
     temp->collidable = true;
     temp->dynamic = true;
     temp->mass = 300;
@@ -55,6 +58,8 @@ int main(void) {
 
     temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
+    temp->displayName = "Heavy Box";
+    temp->observable = true;
     temp->collidable = true;
     temp->dynamic = false;
     temp->mass = 0;
@@ -97,13 +102,14 @@ int main(void) {
         core.CaptureInput();
         if (core.oisKeyboard->isKeyDown(OIS::KC_ESCAPE)) run=false;        
         core.characterController.HandleInput();
+        core.characterController.HandleFocus();
 
         core.RenderOneFrame();        
 
-        if (core.characterController.character->IsOnGround()) {
-            core.console.Print("Character on Ground");
+        if (core.characterController.focusedEntity) {
+            core.console.Print("Looking at %s", core.characterController.focusedEntity->displayName.c_str());
         } else {
-            core.console.Print("Char in the sky");
+            core.console.Print("Staring at sky...");
         }
 
         core.entityManager.UpdateEntities();

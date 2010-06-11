@@ -37,6 +37,7 @@ namespace Mud {
                 );
 
             body = new btRigidBody(rigidBodyCI);
+            body->setUserPointer(static_cast<void *>(this));
             Core::GetInstance().bulWorld->addRigidBody(body);
         }
 

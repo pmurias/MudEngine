@@ -1,13 +1,11 @@
 #ifndef _MudCharacterEntityProperties
 #define _MudCharacterEntityProperties
 
-#include <MudVisibleEntityProperties.h>
-
 #include <OGRE/Ogre.h>
 
 namespace Mud {
 
-    class CharacterEntityProperties : public VisibleEntityProperties {
+    class CharacterEntityProperties {
     public:
         float mass;
         float radius;

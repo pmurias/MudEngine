@@ -36,6 +36,7 @@ namespace Mud {
             );
 
         body = new btRigidBody(rigidBodyCI);
+        body->setUserPointer(static_cast<void *>(this));
 
         body->setDamping(0.5, 1.0);
         body->setActivationState(DISABLE_DEACTIVATION);
