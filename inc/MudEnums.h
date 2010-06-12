@@ -5,7 +5,9 @@ namespace Mud {
 
     enum EntityTemplateType {
         ETT_NONE,
-        ETT_SCENERY
+        ETT_SCENERY,
+        ETT_CONTAINER,
+        ETT_COLLECTABLE
     };
 
     enum BoundingVolumeType {
@@ -20,6 +22,10 @@ namespace Mud {
         CS_TURNING_RIGHT = 1 << 3,
         CS_RUNNING = 1 << 4,
         CS_WALKING = 1 << 5
+    };
+
+    enum ItemClass {
+        IC_GENERAL,
     };
 
 }

@@ -6,6 +6,10 @@
 
 namespace Mud {
 
+    /** Template for creating entities. Usually have same
+     * properties as corelated entity, just without graphical
+     * and physical engine objects. Used by EntityManager factory.
+     */
     class EntityTemplate {
     public:
 

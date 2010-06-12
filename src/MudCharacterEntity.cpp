@@ -4,6 +4,8 @@
 #include <MudCore.h>
 #include <MudUtils.h>
 
+#include <BulletCollision/CollisionDispatch/btGhostObject.h>
+
 namespace Mud {
 
     CharacterEntity::CharacterEntity(const char *name, const char *entityTemplateName) 
@@ -20,29 +22,23 @@ namespace Mud {
 
         collisionShape = new btCapsuleShape(entTemplate->radius, entTemplate->height);
 
-        btDefaultMotionState *motionState = new btDefaultMotionState(
-            btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0))
-            );
+        ghostObject = new btPairCachingGhostObject();
+        ghostObject->setWorldTransform(btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0)));
+        
+        Core::GetInstance().bulBroadphase->getOverlappingPairCache()->setInternalGhostPairCallback(new btGhostPairCallback());
 
-        btVector3 inertia(0,0,0);
+        ghostObject->setCollisionShape(collisionShape);
+        ghostObject->setCollisionFlags(btCollisionObject::CF_CHARACTER_OBJECT);
+        ghostObject->setUserPointer(this);
 
-        collisionShape->calculateLocalInertia(entTemplate->mass, inertia);
+        bodyController = new btKinematicCharacterController(ghostObject, (btConvexShape*)(collisionShape), 0.2);
 
-        btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(
-                entTemplate->mass, 
-                motionState, 
-                collisionShape, 
-                inertia
-            );
-
-        body = new btRigidBody(rigidBodyCI);
-        body->setUserPointer(static_cast<void *>(this));
-
-        body->setDamping(0.5, 1.0);
-        body->setActivationState(DISABLE_DEACTIVATION);
-        body->setAngularFactor(btVector3(0,1,0));    
-
-        Core::GetInstance().bulWorld->addRigidBody(body);
+        Core::GetInstance().bulWorld->addCollisionObject(
+            ghostObject, 
+            btBroadphaseProxy::DefaultFilter, 
+            btBroadphaseProxy::StaticFilter |
+            btBroadphaseProxy::DefaultFilter);
+        Core::GetInstance().bulWorld->addAction(bodyController);
     }
 
     void CharacterEntity::Destroy() {
@@ -54,25 +50,24 @@ namespace Mud {
     }
 
     void CharacterEntity::SetPosition(Ogre::Vector3 pos) {
-        node->setPosition(pos);
-        body->translate(Utils::OgreVec3ToBt(pos) - body->getCenterOfMassPosition());
+        bodyController->warp(Utils::OgreVec3ToBt(pos));
     }
 
     void CharacterEntity::UpdatePosition() {
-        node->setPosition(Utils::BtVec3ToOgre(body->getCenterOfMassPosition()));
+        node->setPosition(Utils::BtVec3ToOgre(ghostObject->getWorldTransform().getOrigin()));
     }
 
     void CharacterEntity::UpdateBehaviour() {
 
         if (state & CS_IDLE) {
-            body->setLinearVelocity(btVector3(0, body->getLinearVelocity().y(), 0));
+            bodyController->setWalkDirection(btVector3(0, 0, 0));
         }
         if (state & CS_MOVING_FORWARD) {                
             Ogre::Vector3 forward = node->getOrientation() * Ogre::Vector3::UNIT_Z;
             forward *= walkSpeed * (state & CS_RUNNING ? runFactor : 1.0);
-            float vely = body->getLinearVelocity().y();                
-            forward.y = (vely < 0.0 ? vely : 0.0);
-            body->setLinearVelocity(Utils::OgreVec3ToBt(forward));
+//            float vely = body->getLinearVelocity().y();                
+  //          forward.y = (vely < 0.0 ? vely : 0.0);        
+            bodyController->setWalkDirection(Utils::OgreVec3ToBt(forward));
         }
 
         if (state & CS_TURNING_LEFT) {
@@ -122,7 +117,7 @@ namespace Mud {
         btVector3 rayBegin = Utils::OgreVec3ToBt(node->getPosition());
         btVector3 rayEnd = Utils::OgreVec3ToBt(node->getPosition() - Ogre::Vector3(0, height * 1.05, 0));
         Utils::ClosestNotMeRayResultCallback rayCallback = 
-            Utils::ClosestNotMeRayResultCallback(body);
+            Utils::ClosestNotMeRayResultCallback(ghostObject);
         Core::GetInstance().bulWorld->rayTest(rayBegin, rayEnd, rayCallback);
 
         return rayCallback.hasHit();

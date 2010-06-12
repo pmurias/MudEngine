@@ -158,6 +158,36 @@ MudCharacterEntity.s:
 .PHONY : MudCharacterEntity.s
 
 # target to build an object file
+MudCollectableEntity.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCollectableEntity.o
+.PHONY : MudCollectableEntity.o
+
+# target to preprocess a source file
+MudCollectableEntity.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCollectableEntity.i
+.PHONY : MudCollectableEntity.i
+
+# target to generate assembly for a file
+MudCollectableEntity.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCollectableEntity.s
+.PHONY : MudCollectableEntity.s
+
+# target to build an object file
+MudCollectableEntityTemplate.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCollectableEntityTemplate.o
+.PHONY : MudCollectableEntityTemplate.o
+
+# target to preprocess a source file
+MudCollectableEntityTemplate.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCollectableEntityTemplate.i
+.PHONY : MudCollectableEntityTemplate.i
+
+# target to generate assembly for a file
+MudCollectableEntityTemplate.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudCollectableEntityTemplate.s
+.PHONY : MudCollectableEntityTemplate.s
+
+# target to build an object file
 MudConsole.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudConsole.o
 .PHONY : MudConsole.o
@@ -171,6 +201,51 @@ MudConsole.i:
 MudConsole.s:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudConsole.s
 .PHONY : MudConsole.s
+
+# target to build an object file
+MudContainerEntity.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntity.o
+.PHONY : MudContainerEntity.o
+
+# target to preprocess a source file
+MudContainerEntity.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntity.i
+.PHONY : MudContainerEntity.i
+
+# target to generate assembly for a file
+MudContainerEntity.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntity.s
+.PHONY : MudContainerEntity.s
+
+# target to build an object file
+MudContainerEntityProperties.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntityProperties.o
+.PHONY : MudContainerEntityProperties.o
+
+# target to preprocess a source file
+MudContainerEntityProperties.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntityProperties.i
+.PHONY : MudContainerEntityProperties.i
+
+# target to generate assembly for a file
+MudContainerEntityProperties.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntityProperties.s
+.PHONY : MudContainerEntityProperties.s
+
+# target to build an object file
+MudContainerEntityTemplate.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntityTemplate.o
+.PHONY : MudContainerEntityTemplate.o
+
+# target to preprocess a source file
+MudContainerEntityTemplate.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntityTemplate.i
+.PHONY : MudContainerEntityTemplate.i
+
+# target to generate assembly for a file
+MudContainerEntityTemplate.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudContainerEntityTemplate.s
+.PHONY : MudContainerEntityTemplate.s
 
 # target to build an object file
 MudCore.o:
@@ -276,6 +351,21 @@ MudHashmapManager.i:
 MudHashmapManager.s:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudHashmapManager.s
 .PHONY : MudHashmapManager.s
+
+# target to build an object file
+MudItem.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudItem.o
+.PHONY : MudItem.o
+
+# target to preprocess a source file
+MudItem.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudItem.i
+.PHONY : MudItem.i
+
+# target to generate assembly for a file
+MudItem.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudItem.s
+.PHONY : MudItem.s
 
 # target to build an object file
 MudSceneryEntity.o:
@@ -430,9 +520,24 @@ help:
 	@echo "... MudCharacterEntity.o"
 	@echo "... MudCharacterEntity.i"
 	@echo "... MudCharacterEntity.s"
+	@echo "... MudCollectableEntity.o"
+	@echo "... MudCollectableEntity.i"
+	@echo "... MudCollectableEntity.s"
+	@echo "... MudCollectableEntityTemplate.o"
+	@echo "... MudCollectableEntityTemplate.i"
+	@echo "... MudCollectableEntityTemplate.s"
 	@echo "... MudConsole.o"
 	@echo "... MudConsole.i"
 	@echo "... MudConsole.s"
+	@echo "... MudContainerEntity.o"
+	@echo "... MudContainerEntity.i"
+	@echo "... MudContainerEntity.s"
+	@echo "... MudContainerEntityProperties.o"
+	@echo "... MudContainerEntityProperties.i"
+	@echo "... MudContainerEntityProperties.s"
+	@echo "... MudContainerEntityTemplate.o"
+	@echo "... MudContainerEntityTemplate.i"
+	@echo "... MudContainerEntityTemplate.s"
 	@echo "... MudCore.o"
 	@echo "... MudCore.i"
 	@echo "... MudCore.s"
@@ -454,6 +559,9 @@ help:
 	@echo "... MudHashmapManager.o"
 	@echo "... MudHashmapManager.i"
 	@echo "... MudHashmapManager.s"
+	@echo "... MudItem.o"
+	@echo "... MudItem.i"
+	@echo "... MudItem.s"
 	@echo "... MudSceneryEntity.o"
 	@echo "... MudSceneryEntity.i"
 	@echo "... MudSceneryEntity.s"

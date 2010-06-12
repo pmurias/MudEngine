@@ -83,7 +83,7 @@ namespace Mud {
             bulPhysicsSolver, 
             bulCollisionConfiguration
             );
-        bulWorld->setGravity(btVector3(0, -20, 0));
+        bulWorld->setGravity(btVector3(0, -10, 0));
     }
 
     void Core::DestroyBullet() {
@@ -101,7 +101,7 @@ namespace Mud {
 
     void Core::RenderOneFrame() {
         ogreRoot->renderOneFrame();
-        bulWorld->stepSimulation(1.0/60.0);
+        bulWorld->stepSimulation(1.0/60.0, 10);
 
         ogreWindow->update();
     }

@@ -6,7 +6,6 @@
 #include <cstdarg>
 
 namespace Mud {
-
     class TextBox {
     public:
 

@@ -5,7 +5,7 @@
 #include <MudVisibleEntityProperties.h>
 
 namespace Mud {
-
+    
     class VisibleEntityTemplate : public EntityTemplate, public VisibleEntityProperties {
     public:
 

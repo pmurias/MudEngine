@@ -22,13 +22,13 @@ namespace Mud {
         else {
             va_start(args, fmt);
             vsprintf(out, fmt, args);
-            va_end(args);
+            va_end(args);          
         }
 
         for (int i = 0; i < consoleLines.size() - 1; i++) {
             consoleLines[i]->SetCaption(consoleLines[i + 1]->GetCaption());
         }
-        consoleLines[consoleLines.size() - 1]->SetCaption(out);
+        consoleLines[consoleLines.size() - 1]->SetCaption(out);        
     }
 
     void Console::Show() {

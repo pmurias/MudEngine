@@ -68,9 +68,9 @@ namespace Mud {
     }
 
     void CharacterController::HandleFocus() {
-        btVector3 rayBegin = Utils::OgreVec3ToBt(character->node->getPosition());
-        btVector3 rayEnd = Utils::OgreVec3ToBt(
-            character->node->getPosition() + character->node->getOrientation() * Ogre::Vector3::UNIT_Z * 1.5
+        btVector3 rayBegin = Utils::OgreVec3ToBt(character->node->getPosition() - Ogre::Vector3(0, character->height*0.75, 0));
+        btVector3 rayEnd = rayBegin + Utils::OgreVec3ToBt(
+            character->node->getOrientation() * Ogre::Vector3::UNIT_Z * 1.5
         );
 
         Utils::ClosestNotMeRayResultCallback rayCallback = 

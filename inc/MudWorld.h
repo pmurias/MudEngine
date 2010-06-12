@@ -6,6 +6,8 @@
 
 namespace Mud {
 
+    /** Game world 
+     */
     class World {
     public:
         btCollisionShape *collisionShape;
@@ -13,7 +15,13 @@ namespace Mud {
         Ogre::Entity *entity;
         Ogre::SceneNode *node;
 
+        /** Loads graphical world representation
+         */
         void SetupWorldGraphics(const char *file);
+        /** Loads physical world representation. It should be
+         * modified version of the graphical representation. Can be i.e.
+         * to create invisible walls, or to make stairs smooth
+         */
         void SetupWorldPhysics(const char *file);
     };
 }

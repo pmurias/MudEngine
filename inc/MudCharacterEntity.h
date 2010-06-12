@@ -5,11 +5,15 @@
 #include <MudCharacterEntityProperties.h>
 #include <MudEnums.h>
 
+#include <BulletDynamics/Character/btKinematicCharacterController.h>
+
 namespace Mud {
 
     class CharacterEntity : public VisibleEntity, public CharacterEntityProperties {
     public:
         int state;
+        btKinematicCharacterController *bodyController;
+        btPairCachingGhostObject* ghostObject;
 
         CharacterEntity(const char *name, const char *entityTemplateName);
         void Destroy();

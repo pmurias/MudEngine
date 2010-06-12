@@ -1,9 +1,4 @@
 #include <MudCore.h>
-#include <MudSceneryEntityTemplate.h>
-#include <MudCharacterEntityTemplate.h>
-#include <MudSceneryEntity.h>
-#include <MudCharacterEntity.h>
-#include <MudUtils.h>
 
 Mud::Core &core = Mud::Core::GetInstance();
 
@@ -39,11 +34,10 @@ int main(void) {
     chr->mass = 70;
     chr->radius = 0.75 * 0.5;
     chr->height = 1.75 * 0.5;
-    chr->walkSpeed = 2.0;
+    chr->walkSpeed = 0.02;
     chr->runFactor = 3.0;
     chr->headOffset = Ogre::Vector3(0,0.7,0);
     core.entityTemplateManager.AddTemplate("char", chr);
-
 
     Mud::SceneryEntityTemplate *temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
@@ -67,6 +61,25 @@ int main(void) {
     temp->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.AddTemplate("test2", temp);
 
+    Mud::ContainerEntityTemplate *contT = new Mud::ContainerEntityTemplate();
+    contT->meshName = "bookshelf.mesh";
+    contT->displayName = "Bookshelf";
+    contT->collidable = true;
+    contT->dynamic = true;
+    contT->mass = 50;
+    contT->boxSize = btVector3(0.7, 1.2, 0.3);
+    contT->boundingVolumeType = Mud::BVT_BOX;
+    core.entityTemplateManager.AddTemplate("bookshelf", contT);
+
+    Mud::CollectableEntityTemplate *colT = new Mud::CollectableEntityTemplate();
+    colT->meshName = "medkit.mesh";
+    colT->displayName = "Med Kit";
+    colT->mass = 2.0;
+    colT->item = NULL;
+    colT->boxSize = btVector3(0.11, 0.11, 0.11);
+    colT->boundingVolumeType = Mud::BVT_BOX;
+    core.entityTemplateManager.AddTemplate("medkit", colT);
+
     Mud::SceneryEntity *ent = new Mud::SceneryEntity("Box1", "test2");
     ent->SetPosition(Ogre::Vector3(3, 1, 0));
     core.entityManager.AddEntity(ent);
@@ -78,6 +91,14 @@ int main(void) {
     ent = new Mud::SceneryEntity("Box3", "test");
     ent->SetPosition(Ogre::Vector3(-3, 1, 0));
     core.entityManager.AddEntity(ent);
+
+    Mud::ContainerEntity *bookshelf = new Mud::ContainerEntity("Bookshelf1", "bookshelf");
+    bookshelf->SetPosition(Ogre::Vector3(4, 1.2, -5));
+    core.entityManager.AddEntity(bookshelf);
+
+    Mud::CollectableEntity *medkit = new Mud::CollectableEntity("Medkit1", "medkit");
+    medkit->SetPosition(Ogre::Vector3(4, 1.2, -3.5));
+    core.entityManager.AddEntity(medkit);
 
 
     Mud::CharacterEntity *player = new Mud::CharacterEntity("NPC", "char");

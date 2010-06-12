@@ -11,12 +11,23 @@
 #include <MudTextBoxManager.h>
 #include <MudConsole.h>
 #include <MudCharacterController.h>
+#include <MudSceneryEntityTemplate.h>
+#include <MudCharacterEntityTemplate.h>
+#include <MudContainerEntityTemplate.h>
+#include <MudCollectableEntityTemplate.h>
+#include <MudSceneryEntity.h>
+#include <MudCharacterEntity.h>
+#include <MudContainerEntity.h>
+#include <MudCollectableEntity.h>
+#include <MudUtils.h>
 
 namespace Mud {
 
+    /** Main class, singleton
+     */
     class Core {
     public:
-        
+           
         Ogre::Root *ogreRoot;
         Ogre::RenderWindow* ogreWindow;
         Ogre::SceneManager* ogreSceneMgr;
@@ -45,13 +56,16 @@ namespace Mud {
 
         static Core &GetInstance();
 
+        /// Initialises Ogre3d engine
         void InitOgre();
         void InitBullet();
 
         void DestroyOgre();
         void DestroyBullet();
 
+        /// Grabs input from OIS devices
         void CaptureInput();
+        /// Updates physical simulation and renders frame using Ogre
         void RenderOneFrame();
     };
 }
