@@ -10,7 +10,7 @@ namespace Mud {
     public:
 
         Ogre::OverlayElement *textArea;
-
+        
         TextBox(
             const char *id, 
             float x, 
@@ -23,7 +23,7 @@ namespace Mud {
         );
 
         void SetPosition(float x, float y);
-        void SetCaption(const char *str);
+        void SetCaption(const char *str);        
         void SetFormattedCaption(const char *fmt, ...);
         const char *GetCaption();
         void Show();

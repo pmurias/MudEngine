@@ -6,9 +6,12 @@
 
 namespace Mud {
 
+    /** Generic container object properties
+     */
     class ContainerEntityProperties {
     public:
-    
+ 
+        /// Collection of Item elements
         Inventory *inventory;
 
         ContainerEntityProperties();

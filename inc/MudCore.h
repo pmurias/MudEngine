@@ -27,40 +27,60 @@ namespace Mud {
      */
     class Core {
     public:
-           
+ 
+        /// Ogre renderer Root
         Ogre::Root *ogreRoot;
+        /// Ogre render window
         Ogre::RenderWindow* ogreWindow;
+        /// Ogre scene manager
         Ogre::SceneManager* ogreSceneMgr;
+        /// Main game camera
         Ogre::Camera* ogreCamera;
+        /// Ogre viewport
         Ogre::Viewport* ogreViewport;
+        /// OIS input device - keyboard
         OIS::Keyboard* oisKeyboard;
+        /// OIS input device - mouse
         OIS::Mouse* oisMouse;
+        /// OIS input manager
         OIS::InputManager *oisInputMgr;
 
+        /// Bullet engine collision optimizer
         btBroadphaseInterface *bulBroadphase;
+        /// Bullet collision configuration
         btDefaultCollisionConfiguration *bulCollisionConfiguration;
+        /// Bullet dispatcher
         btCollisionDispatcher *bulCollisionDispatcher;
+        /// Bullet simulation solver
         btSequentialImpulseConstraintSolver *bulPhysicsSolver;
+        /// Bullet discrete dynamics world
         btDiscreteDynamicsWorld *bulWorld;    
 
-        float timeDelta;
-        float timeStep;
-
+        /// Game engine world
         World world;
+        /// Entity manager which creates and manages all entities
         EntityManager entityManager;
+        /// Entity template manager which holds all entity templates
         EntityTemplateManager entityTemplateManager;
+        /// Manager owning all text boxes
         TextBoxManager textBoxManager;
+        /// On-screen console
         Console console;
         
+        /// Main character controller
         CharacterController characterController;
 
+        /// Singleton accessor
         static Core &GetInstance();
 
-        /// Initialises Ogre3d engine
+        /// Initialises Ogre-related objects
         void InitOgre();
+        /// Initialises Bullet-related obejcts
         void InitBullet();
 
+        /// Destroys Ogre-related objects
         void DestroyOgre();
+        /// Destroys Bullet-related objects
         void DestroyBullet();
 
         /// Grabs input from OIS devices

@@ -12,7 +12,7 @@ namespace Mud {
         /// Unique name
         std::string name;
         
-        Entity(const char *entName, const char *entityTemplateName);        
+        Entity(const char *entName, const char *entityTemplateName);
         virtual void Destroy();
 
         virtual void Update();

@@ -3,6 +3,8 @@
 
 namespace Mud {
 
+    /** Entity template, and entity types
+     */
     enum EntityTemplateType {
         ETT_NONE,
         ETT_SCENERY,
@@ -10,11 +12,16 @@ namespace Mud {
         ETT_COLLECTABLE
     };
 
+    /** Bounding volume types, used by various VisibleEntity
+     * objects
+     */
     enum BoundingVolumeType {
         BVT_BOX,
         BVT_SPHERE
     };
 
+    /** Character state flags
+     */
     enum CharacterState {
         CS_IDLE = 1,
         CS_MOVING_FORWARD = 1 << 1,
@@ -24,6 +31,8 @@ namespace Mud {
         CS_WALKING = 1 << 5
     };
 
+    /** Item classes
+     */
     enum ItemClass {
         IC_GENERAL,
     };

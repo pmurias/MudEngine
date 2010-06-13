@@ -11,9 +11,12 @@ namespace Mud {
 
     class CharacterEntity : public VisibleEntity, public CharacterEntityProperties {
     public:
+        VisibleEntity *focusedEntity;
         int state;
         btKinematicCharacterController *bodyController;
-        btPairCachingGhostObject* ghostObject;
+        btPairCachingGhostObject *ghostObject;
+        btConvexShape *actionCollisionShape;
+        btPairCachingGhostObject *actionObject;
 
         CharacterEntity(const char *name, const char *entityTemplateName);
         void Destroy();
@@ -22,6 +25,10 @@ namespace Mud {
 
         void SetPosition(Ogre::Vector3 pos);
         void UpdatePosition();
+        /// Updates information about entities in character's focus
+        void UpdateFocus();
+
+        /// Updates AI and state changes
         void UpdateBehaviour();
 
         void StartMovingForward();

@@ -353,6 +353,21 @@ MudHashmapManager.s:
 .PHONY : MudHashmapManager.s
 
 # target to build an object file
+MudInventory.o:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudInventory.o
+.PHONY : MudInventory.o
+
+# target to preprocess a source file
+MudInventory.i:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudInventory.i
+.PHONY : MudInventory.i
+
+# target to generate assembly for a file
+MudInventory.s:
+	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudInventory.s
+.PHONY : MudInventory.s
+
+# target to build an object file
 MudItem.o:
 	cd /home/ja/projects/mud && $(MAKE) -f src/CMakeFiles/mud.dir/build.make src/CMakeFiles/mud.dir/MudItem.o
 .PHONY : MudItem.o
@@ -559,6 +574,9 @@ help:
 	@echo "... MudHashmapManager.o"
 	@echo "... MudHashmapManager.i"
 	@echo "... MudHashmapManager.s"
+	@echo "... MudInventory.o"
+	@echo "... MudInventory.i"
+	@echo "... MudInventory.s"
 	@echo "... MudItem.o"
 	@echo "... MudItem.i"
 	@echo "... MudItem.s"
