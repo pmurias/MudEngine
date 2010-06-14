@@ -12,4 +12,13 @@ namespace Mud {
         }
     }
 
+    void Inventory::AddItem(Item *item) {
+    	items.push_back(item);
+    	weight += item->weight;
+    }
+
+    bool Inventory::IsOverweight() {
+    	return weight > capacity;
+    }
+
 }

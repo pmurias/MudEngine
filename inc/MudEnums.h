@@ -37,6 +37,13 @@ namespace Mud {
         IC_GENERAL,
     };
 
+    /** Action types
+     */
+    enum ActionType {
+        AT_DEFAULT,
+        AT_PICK
+    };
+
 }
 
 #endif

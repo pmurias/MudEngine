@@ -52,6 +52,11 @@ namespace Mud {
             }
         }
 
+        /// Removes key value
+        void RemoveElement(const char *key) {
+        	map.erase(key);
+        }
+
     };
 
 }

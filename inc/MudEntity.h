@@ -13,7 +13,7 @@ namespace Mud {
         std::string name;
         
         Entity(const char *entName, const char *entityTemplateName);
-        virtual void Destroy();
+        virtual ~Entity();
 
         virtual void Update();
     };

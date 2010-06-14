@@ -6,15 +6,21 @@
 
 namespace Mud {
 
+	/**
+	 * Various container entity class, used for bookshelves, lockers, etc.
+	 */
     class ContainerEntity : public SceneryEntity, public ContainerEntityProperties {
     public:
         ContainerEntity(const char *name, const char *entityTemplateName);
-        void Destroy();
+        ~ContainerEntity();
 
         void Update();
 
         void SetPosition(Ogre::Vector3 pos);
         void UpdatePosition();
+
+        /// For container, default action is plundering
+        ActionType GetDefaultActionType();
 
     };
 

@@ -3,6 +3,7 @@
 
 #include <MudHashmapManager.h>
 #include <MudEntity.h>
+#include <list>
 
 namespace Mud {
 
@@ -10,10 +11,12 @@ namespace Mud {
      */
     class EntityManager : public HashmapManager<Entity *> {
     public:
+    	std::list<std::string> destructionQueue;
 
         EntityManager();
 
         void AddEntity(Entity *elem);
+        void QueueToDestroy(Entity *elem);
 
         void UpdateEntities();
     };

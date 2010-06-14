@@ -2,14 +2,19 @@
 #define _MudCollectableEntityTemplate
 
 #include <MudSceneryEntityTemplate.h>
+#include <string>
 
 namespace Mud {
 
-    class Item;
+    class ItemTemplate;
 
+    /**
+     * Template for creating collectible entities
+     */
     class CollectableEntityTemplate : public SceneryEntityTemplate {
     public:
-        Item *item;
+    	std::string itemTemplateName;
+    	int quantity;
 
         CollectableEntityTemplate();
     };

@@ -13,7 +13,7 @@ namespace Mud {
         observable = true;
     }
 
-    void ContainerEntity::Destroy() {
+    ContainerEntity::~ContainerEntity() {
     }
 
     void ContainerEntity::Update() {        
@@ -26,6 +26,10 @@ namespace Mud {
 
     void ContainerEntity::UpdatePosition() {
         SceneryEntity::UpdatePosition();
+    }
+
+    ActionType ContainerEntity::GetDefaultActionType() {
+    	return AT_DEFAULT;
     }
 
 }

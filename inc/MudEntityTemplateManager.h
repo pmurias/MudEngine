@@ -6,6 +6,9 @@
 
 namespace Mud {
 
+	/**
+	 * It Manages all templates. It is not a Entity factory
+	 */
     class EntityTemplateManager : public HashmapManager<EntityTemplate *> {
     public:
 

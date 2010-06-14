@@ -8,5 +8,7 @@ namespace Mud {
         collidable = true;
         dynamic = true;
         mass = 10.0;
+
+        quantity = 1;
     }
 }

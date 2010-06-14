@@ -11,6 +11,9 @@
 
 namespace Mud {
 
+	/**
+	 * Template for creating character Entities
+	 */
     class CharacterEntityTemplate : public VisibleEntityTemplate, public CharacterEntityProperties {
     public:
         std::string meshName;

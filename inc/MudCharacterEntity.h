@@ -9,17 +9,21 @@
 
 namespace Mud {
 
+	class Inventory;
+
+	/**
+	 * Game character class
+	 */
     class CharacterEntity : public VisibleEntity, public CharacterEntityProperties {
     public:
         VisibleEntity *focusedEntity;
         int state;
-        btKinematicCharacterController *bodyController;
         btPairCachingGhostObject *ghostObject;
-        btConvexShape *actionCollisionShape;
-        btPairCachingGhostObject *actionObject;
+        btConvexShape *ghostShape;
+        btVector3 desiredMoveVelocity;
 
         CharacterEntity(const char *name, const char *entityTemplateName);
-        void Destroy();
+        ~CharacterEntity();
 
         void Update();
 
@@ -38,8 +42,13 @@ namespace Mud {
         void StopTurning();
         void Run();
         void Walk();
-
         bool IsOnGround();
+
+        /// Performs default action on entity in focus area of character
+        void PerfromDefaultActionOnFocusedEntity();
+
+        /// For character, default action is talk
+        ActionType GetDefaultActionType();
 
     };
 

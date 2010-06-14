@@ -6,6 +6,9 @@
 
 namespace Mud {
 
+	/**
+	 * Template for creating container entity instances
+	 */
     class ContainerEntityTemplate : public SceneryEntityTemplate, public ContainerEntityProperties {
     public:
 

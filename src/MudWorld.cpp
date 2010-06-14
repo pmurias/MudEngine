@@ -38,6 +38,7 @@ namespace Mud {
         btRigidBody::btRigidBodyConstructionInfo
             levelRigidBodyCI(0, levelMotionState, collisionShape, btVector3(0,0,0));
         btRigidBody* body = new btRigidBody(levelRigidBodyCI);
+        body->setFriction(0.9);
 
         core.bulWorld->addRigidBody(body);
     }

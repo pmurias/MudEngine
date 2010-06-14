@@ -20,7 +20,13 @@ namespace Mud {
         float weight;
 
         /// Returns copy of Inventory object and all items it contains
-        Inventory *Clone();        
+        Inventory *Clone();
+
+        /// Adds item to inventory and updates weight
+        void AddItem(Item *);
+
+        /// Returns true if sum of items weight exceeds capacity
+        bool IsOverweight();
     };
 }
 

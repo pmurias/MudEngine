@@ -12,9 +12,10 @@ namespace Mud {
         *(static_cast<VisibleEntityProperties *>(this)) = *(static_cast<VisibleEntityProperties*>(entTemplate));
     }
 
-    void VisibleEntity::Destroy() {
+    VisibleEntity::~VisibleEntity() {
 
     }
+
 
     void VisibleEntity::SetPosition(Ogre::Vector3 pos) {
 
@@ -24,6 +25,13 @@ namespace Mud {
     }
 
     void VisibleEntity::Update() {
+    }
+
+    void VisibleEntity::ActionPerform(Action *action) {
+    }
+
+    ActionType VisibleEntity::GetDefaultActionType() {
+    	return AT_DEFAULT;
     }
 
 }

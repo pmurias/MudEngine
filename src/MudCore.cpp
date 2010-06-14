@@ -101,7 +101,7 @@ namespace Mud {
 
     void Core::RenderOneFrame() {
         ogreRoot->renderOneFrame();
-        bulWorld->stepSimulation(1.0/60.0, 10);
+        bulWorld->stepSimulation(1.0/60.0);
 
         ogreWindow->update();
     }

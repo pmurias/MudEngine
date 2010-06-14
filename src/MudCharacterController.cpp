@@ -10,6 +10,7 @@ namespace Mud {
         focusedEntity = NULL;
     }
 
+
     void CharacterController::UpdateCameraPosition() {
         if (character) {
             desiredCameraPosition = character->node->getPosition();
@@ -64,6 +65,10 @@ namespace Mud {
             character->Run();
         } else {
             character->Walk();
+        }
+
+        if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_LCONTROL)) {
+        	character->PerfromDefaultActionOnFocusedEntity();
         }
     }
 

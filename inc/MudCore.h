@@ -19,6 +19,10 @@
 #include <MudCharacterEntity.h>
 #include <MudContainerEntity.h>
 #include <MudCollectableEntity.h>
+#include <MudItem.h>
+#include <MudItemTemplate.h>
+#include <MudItemFactory.h>
+#include <MudInventory.h>
 #include <MudUtils.h>
 
 namespace Mud {
@@ -62,6 +66,8 @@ namespace Mud {
         EntityManager entityManager;
         /// Entity template manager which holds all entity templates
         EntityTemplateManager entityTemplateManager;
+        /// Factory used to create Item instances and hold ItemTemplate's
+        ItemFactory itemFactory;
         /// Manager owning all text boxes
         TextBoxManager textBoxManager;
         /// On-screen console
@@ -70,12 +76,12 @@ namespace Mud {
         /// Main character controller
         CharacterController characterController;
 
-        /// Singleton accessor
+        /// Singleton accesor
         static Core &GetInstance();
 
-        /// Initialises Ogre-related objects
+        /// Initializes Ogre-related objects
         void InitOgre();
-        /// Initialises Bullet-related obejcts
+        /// Initializes Bullet-related objects
         void InitBullet();
 
         /// Destroys Ogre-related objects

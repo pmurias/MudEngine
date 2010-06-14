@@ -3,12 +3,15 @@
 
 #include <MudEntity.h>
 #include <MudVisibleEntityProperties.h>
+#include <MudEnums.h>
 
 #include <OGRE/Ogre.h>
 #include <btBulletDynamicsCommon.h>
 
 
 namespace Mud {
+
+    class Action;
 
     /** Class representing every entities which have graphical and,
      * optionally physical representation
@@ -23,10 +26,10 @@ namespace Mud {
 
         /** Creates entity using template
          * @param name Unique entity identifier
-         * @parm entityTemplateName Template name which should be present in EntityTemplateManager
+         * @param entityTemplateName Template name which should be present in EntityTemplateManager
          */
         VisibleEntity(const char *name, const char *entityTemplateName);
-        virtual void Destroy();
+        virtual ~VisibleEntity();
 
         /** Should instantly move entity to specified position
          * @param pos Worldspace position
@@ -35,8 +38,14 @@ namespace Mud {
         /// Unifies physical body and graphical node position
         virtual void UpdatePosition();
 
-        /// General entity behaviour
+        /// General entity behavior
         virtual void Update();
+
+        /// Used to handle actions when entity is observable
+        virtual void ActionPerform(Action *action);
+
+        /// Returns default action type of action performed on this entity
+        virtual ActionType GetDefaultActionType();
     };
 
 }

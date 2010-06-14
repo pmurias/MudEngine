@@ -1,4 +1,5 @@
 #include <MudEntity.h>
+#include <cstdio>
 
 namespace Mud {
 
@@ -6,7 +7,7 @@ namespace Mud {
         name = entName;
     }
 
-    void Entity::Destroy() {
+    Entity::~Entity() {
     }
 
     void Entity::Update() {

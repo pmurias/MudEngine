@@ -2,6 +2,7 @@
 #include <MudCharacterEntityTemplate.h>
 #include <MudCharacterEntityProperties.h>
 #include <MudCore.h>
+#include <MudAction.h>
 #include <MudUtils.h>
 
 #include <BulletCollision/CollisionDispatch/btGhostObject.h>
@@ -16,6 +17,7 @@ namespace Mud {
         *(static_cast<CharacterEntityProperties *>(this)) = *(static_cast<CharacterEntityProperties*>(entTemplate));
         state = 0;
         focusedEntity = NULL;
+        inventory = new Inventory();
 
         entity = Core::GetInstance().ogreSceneMgr->createEntity(name, entTemplate->meshName);
         node = Core::GetInstance().ogreSceneMgr->getRootSceneNode()->createChildSceneNode(name);
@@ -23,59 +25,42 @@ namespace Mud {
 
         collisionShape = new btCapsuleShape(radius, height);
 
-            btDefaultMotionState *motionState = new btDefaultMotionState(
-                btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0))
-                );
+        btDefaultMotionState *motionState = new btDefaultMotionState(
+            btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0))
+            );
 
-            btVector3 inertia(0,0,0);
-            collisionShape->calculateLocalInertia(0, inertia);
-            btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(
-                    0, 
-                    motionState, 
-                    collisionShape, 
-                    inertia
-                );
+        btVector3 inertia(0,0,0);
+        collisionShape->calculateLocalInertia(mass, inertia);
+        btRigidBody::btRigidBodyConstructionInfo rigidBodyCI(
+                mass, 
+                motionState, 
+                collisionShape, 
+                inertia
+            );
 
-            body = new btRigidBody(rigidBodyCI);
-            body->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
-            body->setUserPointer(static_cast<void *>(this));
-            Core::GetInstance().bulWorld->addRigidBody(body, btBroadphaseProxy::CharacterFilter,
-                    btBroadphaseProxy::AllFilter);
+        body = new btRigidBody(rigidBodyCI);
+        body->setUserPointer(static_cast<void *>(this));
+        body->setActivationState(DISABLE_DEACTIVATION);
+        body->setFriction(0.9);
+        body->setAngularFactor(btVector3(0, 1, 0));
+        Core::GetInstance().bulWorld->addRigidBody(body);
 
         Core::GetInstance().bulBroadphase->getOverlappingPairCache()->setInternalGhostPairCallback(new btGhostPairCallback());
 
+        ghostShape = new btCylinderShape(btVector3(radius, height, radius));
+
         ghostObject = new btPairCachingGhostObject();
         ghostObject->setWorldTransform(btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0)));
-        ghostObject->setCollisionShape(collisionShape);
-        ghostObject->setCollisionFlags(btCollisionObject::CF_CHARACTER_OBJECT);
+        ghostObject->setCollisionShape(ghostShape);
+        ghostObject->setCollisionFlags(btCollisionObject::CF_NO_CONTACT_RESPONSE);
         ghostObject->setUserPointer(this);
 
-        bodyController = new btKinematicCharacterController(ghostObject, (btConvexShape*)(collisionShape), 0.2);
-
-        actionCollisionShape = new btCylinderShape(btVector3(radius, height, radius));
-
-        actionObject = new btPairCachingGhostObject();
-        actionObject->setWorldTransform(btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0)));
-        actionObject->setCollisionShape(actionCollisionShape);
-        actionObject->setCollisionFlags(actionObject->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
-        
-
-        Core::GetInstance().bulWorld->addCollisionObject(
-            ghostObject, 
-            btBroadphaseProxy::DefaultFilter, 
-            btBroadphaseProxy::StaticFilter |
-            btBroadphaseProxy::DefaultFilter);
-
-        Core::GetInstance().bulWorld->addCollisionObject(
-            actionObject,
-            btBroadphaseProxy::SensorTrigger,
-            btBroadphaseProxy::AllFilter
-        );
-
-        Core::GetInstance().bulWorld->addAction(bodyController);
+        Core::GetInstance().bulWorld->addCollisionObject(ghostObject,
+                btBroadphaseProxy::SensorTrigger | btBroadphaseProxy::StaticFilter,
+                btBroadphaseProxy::AllFilter);
     }
 
-    void CharacterEntity::Destroy() {
+    CharacterEntity::~CharacterEntity() {
     }
 
     void CharacterEntity::Update() {
@@ -85,23 +70,22 @@ namespace Mud {
     }
 
     void CharacterEntity::SetPosition(Ogre::Vector3 pos) {
-        bodyController->warp(Utils::OgreVec3ToBt(pos));
+        body->setWorldTransform(btTransform(btQuaternion(0,0,0,1), Utils::OgreVec3ToBt(pos)));
     }
 
     void CharacterEntity::UpdatePosition() {
-        node->setPosition(Utils::BtVec3ToOgre(ghostObject->getWorldTransform().getOrigin()));
-        Ogre::Vector3 offset = (node->getOrientation() * Ogre::Vector3::UNIT_Z) * radius * 2.0;
+        node->setPosition(Utils::BtVec3ToOgre(body->getWorldTransform().getOrigin()));
 
-        actionObject->setWorldTransform(btTransform(btQuaternion(0,0,0,1), Utils::OgreVec3ToBt(node->getPosition() + offset)));    
-        body->setWorldTransform(btTransform(btQuaternion(0,0,0,1), Utils::OgreVec3ToBt(node->getPosition())));
+        Ogre::Vector3 offset = (node->getOrientation() * Ogre::Vector3::UNIT_Z) * radius * 2.0;
+        ghostObject->setWorldTransform(btTransform(btQuaternion(0,0,0,1), Utils::OgreVec3ToBt(node->getPosition() + offset)));
     }
 
     void CharacterEntity::UpdateFocus() {
         focusedEntity = NULL;
-        int numOverlappingObjects = actionObject->getNumOverlappingObjects();
+        int numOverlappingObjects = ghostObject->getNumOverlappingObjects();
         if (numOverlappingObjects) {
             for (int i = 0; i < numOverlappingObjects; i++) {
-                VisibleEntity *entity = static_cast<VisibleEntity *>(actionObject->getOverlappingObject(i)->getUserPointer());
+                VisibleEntity *entity = static_cast<VisibleEntity *>(ghostObject->getOverlappingObject(i)->getUserPointer());
                 if (entity && (entity != this)) {
                     focusedEntity = entity;
                     break;
@@ -112,15 +96,16 @@ namespace Mud {
 
     void CharacterEntity::UpdateBehaviour() {
 
+
         if (state & CS_IDLE) {
-            bodyController->setWalkDirection(btVector3(0, 0, 0));
+            desiredMoveVelocity = btVector3(0,0,0);
         }
         if (state & CS_MOVING_FORWARD) {                
             Ogre::Vector3 forward = node->getOrientation() * Ogre::Vector3::UNIT_Z;
             forward *= walkSpeed * (state & CS_RUNNING ? runFactor : 1.0);
 //            float vely = body->getLinearVelocity().y();                
-  //          forward.y = (vely < 0.0 ? vely : 0.0);        
-            bodyController->setWalkDirection(Utils::OgreVec3ToBt(forward));
+  //          forward.y = (vely < 0.0 ? vely : 0.0);
+            desiredMoveVelocity = Utils::OgreVec3ToBt(forward);
         }
 
         if (state & CS_TURNING_LEFT) {
@@ -131,6 +116,13 @@ namespace Mud {
             Ogre::Quaternion turn = Ogre::Vector3(0,0,1).getRotationTo(Ogre::Vector3(-0.1, 0, 1));
             node->setOrientation(node->getOrientation() * turn);
         }
+
+        body->setLinearVelocity(btVector3(
+            desiredMoveVelocity.x(),
+            body->getLinearVelocity().y(),
+            desiredMoveVelocity.z()
+        ));
+
 
     }
 
@@ -170,10 +162,20 @@ namespace Mud {
         btVector3 rayBegin = Utils::OgreVec3ToBt(node->getPosition());
         btVector3 rayEnd = Utils::OgreVec3ToBt(node->getPosition() - Ogre::Vector3(0, height * 1.05, 0));
         Utils::ClosestNotMeRayResultCallback rayCallback = 
-            Utils::ClosestNotMeRayResultCallback(ghostObject);
+            Utils::ClosestNotMeRayResultCallback(body);
         Core::GetInstance().bulWorld->rayTest(rayBegin, rayEnd, rayCallback);
 
         return rayCallback.hasHit();
+    }
+
+    ActionType CharacterEntity::GetDefaultActionType() {
+    	return AT_DEFAULT;
+    }
+
+    void CharacterEntity::PerfromDefaultActionOnFocusedEntity() {
+    	if (focusedEntity) {
+    		focusedEntity->ActionPerform(new Action(focusedEntity->GetDefaultActionType(), this));
+    	}
     }
 }
 

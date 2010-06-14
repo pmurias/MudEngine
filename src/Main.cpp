@@ -27,18 +27,30 @@ int main(void) {
     core.ogreSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
     core.ogreSceneMgr->setAmbientLight(Ogre::ColourValue(0.0,0.0,0.0));
 
+ //-- ----------- ITEM TEMPLATES ---------------------
+    Mud::ItemTemplate *itTemp = new Mud::ItemTemplate();
+    itTemp->description ="Med Kit developed by alien beholders from hell. \
+    		In fact, it contains only diseases.";
+    itTemp->name = "Med Kit";
+    itTemp->value = 666;
+    itTemp->weight = 10;
+    itTemp->itemClass = Mud::IC_GENERAL;
+    core.itemFactory.AddItemTemplate("medkit", itTemp);
+
+ // ---------------------- CHARACTER TEMPLATES --------------
     Mud::CharacterEntityTemplate *chr = new Mud::CharacterEntityTemplate();
     chr->meshName="capsule.mesh";
     chr->displayName = "Capsule";
     chr->observable = true;
-    chr->mass = 70;
+    chr->mass = 1;
     chr->radius = 0.75 * 0.5;
     chr->height = 1.75 * 0.5;
-    chr->walkSpeed = 0.02;
+    chr->walkSpeed = 1.2;
     chr->runFactor = 3.0;
     chr->headOffset = Ogre::Vector3(0,0.7,0);
     core.entityTemplateManager.AddTemplate("char", chr);
 
+  /// --------------------------SCENERY TEMPLATES --------------------
     Mud::SceneryEntityTemplate *temp = new Mud::SceneryEntityTemplate();
     temp->meshName = "box.mesh";
     temp->displayName = "Crate";
@@ -61,24 +73,26 @@ int main(void) {
     temp->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.AddTemplate("test2", temp);
 
+ //=---------------------------------- CONTAINER TEMPLATES --------------------------
     Mud::ContainerEntityTemplate *contT = new Mud::ContainerEntityTemplate();
     contT->meshName = "bookshelf.mesh";
     contT->displayName = "Bookshelf";
     contT->collidable = true;
     contT->dynamic = true;
-    contT->mass = 50;
+    contT->mass = 40;
     contT->boxSize = btVector3(0.7, 1.2, 0.3);
     contT->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.AddTemplate("bookshelf", contT);
 
+ // --------------------------------- COLLECTABLE TEMPLATES --------------------------
     Mud::CollectableEntityTemplate *colT = new Mud::CollectableEntityTemplate();
     colT->meshName = "medkit.mesh";
-    colT->displayName = "Med Kit";
     colT->mass = 2.0;
-    colT->item = NULL;
+    colT->itemTemplateName = "medkit";
     colT->boxSize = btVector3(0.11, 0.11, 0.11);
     colT->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.AddTemplate("medkit", colT);
+
 
     Mud::SceneryEntity *ent = new Mud::SceneryEntity("Box1", "test2");
     ent->SetPosition(Ogre::Vector3(3, 1, 0));
@@ -94,6 +108,8 @@ int main(void) {
 
     Mud::ContainerEntity *bookshelf = new Mud::ContainerEntity("Bookshelf1", "bookshelf");
     bookshelf->SetPosition(Ogre::Vector3(4, 1.2, -5));
+    bookshelf->body->setDamping(0.9, 0.99);
+    bookshelf->body->setFriction(0.9);
     core.entityManager.AddEntity(bookshelf);
 
     Mud::CollectableEntity *medkit = new Mud::CollectableEntity("Medkit1", "medkit");

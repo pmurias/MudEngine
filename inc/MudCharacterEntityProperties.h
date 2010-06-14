@@ -5,6 +5,8 @@
 
 namespace Mud {
 
+	class Inventory;
+
     /** Generic character properties
      */
     class CharacterEntityProperties {
@@ -22,7 +24,10 @@ namespace Mud {
         float runFactor;
 
         /// Head offset from center of mass position. Used by CharacterController.
-        Ogre::Vector3 headOffset;        
+        Ogre::Vector3 headOffset;
+
+        /// Inventory
+        Inventory *inventory;
     };
 }
 

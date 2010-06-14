@@ -14,12 +14,16 @@ namespace Mud {
         Item *item;
 
         CollectableEntity(const char *name, const char *entityTemplateName);
+        ~CollectableEntity();
         void Destroy();
 
         void Update();
 
         void SetPosition(Ogre::Vector3 pos);
         void UpdatePosition();
+        void ActionPerform(Action *action);
+
+        ActionType GetDefaultActionType();
     };
 
 }

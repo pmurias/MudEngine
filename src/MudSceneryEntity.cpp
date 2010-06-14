@@ -37,13 +37,26 @@ namespace Mud {
                 );
 
             body = new btRigidBody(rigidBodyCI);
+            body->setDamping(0.9, 0.99);
+            body->setFriction(0.9);
+
             body->setUserPointer(static_cast<void *>(this));
             Core::GetInstance().bulWorld->addRigidBody(body);
         }
 
     }
 
-    void SceneryEntity::Destroy() {
+    SceneryEntity::~SceneryEntity() {
+    	node->detachAllObjects();
+    	Core::GetInstance().ogreSceneMgr->destroySceneNode(node);
+    	Core::GetInstance().ogreSceneMgr->destroyEntity(entity);
+
+    	if (collidable) {
+    		Core::GetInstance().bulWorld->removeRigidBody(body);
+    		delete body->getMotionState();
+    		delete body;
+    		delete collisionShape;
+    	}
     }
 
     void SceneryEntity::Update() {
@@ -58,6 +71,13 @@ namespace Mud {
     void SceneryEntity::UpdatePosition() {
         node->setPosition(Utils::BtVec3ToOgre(body->getCenterOfMassPosition()));
         node->setOrientation(Utils::BtQuatToOgre(body->getOrientation()));
+    }
+
+    void SceneryEntity::ActionPerform(Action *action) {
+    }
+
+    ActionType SceneryEntity::GetDefaultActionType() {
+    	return AT_DEFAULT;
     }
 }
 
