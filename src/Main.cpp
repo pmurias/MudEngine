@@ -79,10 +79,20 @@ int main(void) {
     contT->displayName = "Bookshelf";
     contT->collidable = true;
     contT->dynamic = true;
-    contT->mass = 40;
+    contT->mass = 30;
     contT->boxSize = btVector3(0.7, 1.2, 0.3);
     contT->boundingVolumeType = Mud::BVT_BOX;
     core.entityTemplateManager.AddTemplate("bookshelf", contT);
+
+    contT = new Mud::ContainerEntityTemplate();
+	contT->meshName = "chest.mesh";
+	contT->displayName = "Chest";
+	contT->collidable = true;
+	contT->dynamic = true;
+	contT->mass = 30;
+	contT->boxSize = btVector3(0.6, 0.3, 0.3);
+	contT->boundingVolumeType = Mud::BVT_BOX;
+	core.entityTemplateManager.AddTemplate("chest", contT);
 
  // --------------------------------- COLLECTABLE TEMPLATES --------------------------
     Mud::CollectableEntityTemplate *colT = new Mud::CollectableEntityTemplate();
@@ -108,13 +118,19 @@ int main(void) {
 
     Mud::ContainerEntity *bookshelf = new Mud::ContainerEntity("Bookshelf1", "bookshelf");
     bookshelf->SetPosition(Ogre::Vector3(4, 1.2, -5));
-    bookshelf->body->setDamping(0.9, 0.99);
-    bookshelf->body->setFriction(0.9);
     core.entityManager.AddEntity(bookshelf);
 
-    Mud::CollectableEntity *medkit = new Mud::CollectableEntity("Medkit1", "medkit");
-    medkit->SetPosition(Ogre::Vector3(4, 1.2, -3.5));
-    core.entityManager.AddEntity(medkit);
+    Mud::OpenableContainerEntity *chest = new Mud::OpenableContainerEntity("Chest1", "chest");
+    chest->SetPosition(Ogre::Vector3(2, 1.2, -5));
+    core.entityManager.AddEntity(chest);
+
+    for (int i = 0; i < 10; i++) {
+    	char _name[255];
+    	sprintf(_name, "Medkit%d", i);
+    	Mud::CollectableEntity *medkit = new Mud::CollectableEntity(_name, "medkit");
+    	medkit->SetPosition(Ogre::Vector3(4- i*0.3, 1.2, -3.5));
+    	core.entityManager.AddEntity(medkit);
+    }
 
 
     Mud::CharacterEntity *player = new Mud::CharacterEntity("NPC", "char");
@@ -137,6 +153,8 @@ int main(void) {
 
     Mud::TextBox *tbFps = core.textBoxManager.CreateTextBox("tbFps", 750, 10, 100, 30, "BlueHigh", "16", Ogre::ColourValue(0.0, 1.0, 1.0));
 
+    Mud::Entity *lastFocused;
+
     while (run) {
         core.CaptureInput();
         if (core.oisKeyboard->isKeyDown(OIS::KC_ESCAPE)) run=false;        
@@ -146,12 +164,14 @@ int main(void) {
         tbFps->SetFormattedCaption("FPS:%d", (int)(core.ogreWindow->getAverageFPS()));
         core.RenderOneFrame();        
 
-        if (core.characterController.focusedEntity) {
-            core.console.Print("Looking at %s", core.characterController.focusedEntity->displayName.c_str());
-        } else {
-            core.console.Print("Staring at sky...");
+        if (lastFocused != core.characterController.focusedEntity) {
+        	lastFocused = core.characterController.focusedEntity;
+        	if (lastFocused) {
+        		core.console.Print("Looking at %s", core.characterController.focusedEntity->displayName.c_str());
+        	}
         }
 
+        core.eventManager.UpdateEvents();
         core.entityManager.UpdateEntities();
 
         core.characterController.UpdateCameraPosition();

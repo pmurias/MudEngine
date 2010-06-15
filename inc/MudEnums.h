@@ -41,7 +41,16 @@ namespace Mud {
      */
     enum ActionType {
         AT_DEFAULT,
-        AT_PICK
+        AT_PICK,
+        AT_TOGGLE_CONTAINER_STATE
+    };
+
+    /** Openable entity usage phases
+     */
+    enum OpenableContainerState {
+    	OCS_IDLE,
+    	OCS_OPENING,
+    	OCS_CLOSING
     };
 
 }

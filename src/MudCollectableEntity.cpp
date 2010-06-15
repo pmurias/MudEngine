@@ -2,6 +2,7 @@
 #include <MudCollectableEntityTemplate.h>
 #include <MudItem.h>
 #include <MudAction.h>
+#include <MudPickItemEvent.h>
 #include <MudCore.h>
 
 namespace Mud {
@@ -43,6 +44,9 @@ namespace Mud {
 				break;
 			case(AT_PICK):
 			{
+				if (item) {
+					Core::GetInstance().eventManager.QueueEvent(new PickItemEvent(action->performer, item));
+				}
 				action->performer->focusedEntity = NULL;
 				Core::GetInstance().entityManager.QueueToDestroy(this);
 				break;

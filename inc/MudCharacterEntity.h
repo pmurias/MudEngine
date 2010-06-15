@@ -10,6 +10,7 @@
 namespace Mud {
 
 	class Inventory;
+	class Item;
 
 	/**
 	 * Game character class
@@ -43,6 +44,9 @@ namespace Mud {
         void Run();
         void Walk();
         bool IsOnGround();
+
+        /// Picks item into inventory
+        void Pick(Item *item);
 
         /// Performs default action on entity in focus area of character
         void PerfromDefaultActionOnFocusedEntity();

@@ -65,12 +65,15 @@ namespace Mud {
 
     void SceneryEntity::SetPosition(Ogre::Vector3 pos) {
         node->setPosition(pos);
-        body->translate(Utils::OgreVec3ToBt(pos) - body->getCenterOfMassPosition());
+        if (collidable)
+        	body->translate(Utils::OgreVec3ToBt(pos) - body->getCenterOfMassPosition());
     }
 
     void SceneryEntity::UpdatePosition() {
-        node->setPosition(Utils::BtVec3ToOgre(body->getCenterOfMassPosition()));
-        node->setOrientation(Utils::BtQuatToOgre(body->getOrientation()));
+    	if (collidable) {
+    		node->setPosition(Utils::BtVec3ToOgre(body->getCenterOfMassPosition()));
+    		node->setOrientation(Utils::BtQuatToOgre(body->getOrientation()));
+    	}
     }
 
     void SceneryEntity::ActionPerform(Action *action) {

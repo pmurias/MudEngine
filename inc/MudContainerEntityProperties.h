@@ -10,6 +10,8 @@ namespace Mud {
      */
     class ContainerEntityProperties {
     public:
+    	/// Determines if container is locked
+    	bool isLocked;
  
         /// Collection of Item elements
         Inventory *inventory;

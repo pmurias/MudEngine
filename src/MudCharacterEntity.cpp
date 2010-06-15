@@ -1,9 +1,11 @@
 #include <MudCharacterEntity.h>
 #include <MudCharacterEntityTemplate.h>
 #include <MudCharacterEntityProperties.h>
-#include <MudCore.h>
 #include <MudAction.h>
+#include <MudInventory.h>
+#include <MudItem.h>
 #include <MudUtils.h>
+#include <MudCore.h>
 
 #include <BulletCollision/CollisionDispatch/btGhostObject.h>
 
@@ -41,7 +43,7 @@ namespace Mud {
         body = new btRigidBody(rigidBodyCI);
         body->setUserPointer(static_cast<void *>(this));
         body->setActivationState(DISABLE_DEACTIVATION);
-        body->setFriction(0.9);
+        body->setFriction(0.0);
         body->setAngularFactor(btVector3(0, 1, 0));
         Core::GetInstance().bulWorld->addRigidBody(body);
 
@@ -103,8 +105,6 @@ namespace Mud {
         if (state & CS_MOVING_FORWARD) {                
             Ogre::Vector3 forward = node->getOrientation() * Ogre::Vector3::UNIT_Z;
             forward *= walkSpeed * (state & CS_RUNNING ? runFactor : 1.0);
-//            float vely = body->getLinearVelocity().y();                
-  //          forward.y = (vely < 0.0 ? vely : 0.0);
             desiredMoveVelocity = Utils::OgreVec3ToBt(forward);
         }
 
@@ -166,6 +166,11 @@ namespace Mud {
         Core::GetInstance().bulWorld->rayTest(rayBegin, rayEnd, rayCallback);
 
         return rayCallback.hasHit();
+    }
+
+    void CharacterEntity::Pick(Item *item) {
+    	inventory->AddItem(item);
+    	Core::GetInstance().console.Print("%s picked %s", name.c_str(), item->itemTemplate->name.c_str());
     }
 
     ActionType CharacterEntity::GetDefaultActionType() {

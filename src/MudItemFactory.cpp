@@ -17,6 +17,7 @@ namespace Mud {
 
 		Item *item = new Item();
 		*(static_cast<ItemProperties*>(item)) = *(static_cast<ItemProperties*>(temp));
+		item->itemTemplate = temp;
 		item->quantity = quantity;
 
 		return item;

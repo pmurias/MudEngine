@@ -18,11 +18,14 @@
 #include <MudSceneryEntity.h>
 #include <MudCharacterEntity.h>
 #include <MudContainerEntity.h>
+#include <MudOpenableContainerEntity.h>
 #include <MudCollectableEntity.h>
 #include <MudItem.h>
 #include <MudItemTemplate.h>
 #include <MudItemFactory.h>
 #include <MudInventory.h>
+#include <MudEvent.h>
+#include <MudEventManager.h>
 #include <MudUtils.h>
 
 namespace Mud {
@@ -64,6 +67,8 @@ namespace Mud {
         World world;
         /// Entity manager which creates and manages all entities
         EntityManager entityManager;
+        /// Manager controlling game events
+        EventManager eventManager;
         /// Entity template manager which holds all entity templates
         EntityTemplateManager entityTemplateManager;
         /// Factory used to create Item instances and hold ItemTemplate's
