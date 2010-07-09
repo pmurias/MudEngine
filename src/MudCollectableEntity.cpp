@@ -1,8 +1,6 @@
 #include <MudCollectableEntity.h>
 #include <MudCollectableEntityTemplate.h>
 #include <MudItem.h>
-#include <MudAction.h>
-#include <MudPickItemEvent.h>
 #include <MudCore.h>
 
 namespace Mud {
@@ -38,21 +36,7 @@ namespace Mud {
         SceneryEntity::UpdatePosition();
     }
 
-    void CollectableEntity::ActionPerform(Action *action) {
-    	switch (action->type) {
-			case(AT_DEFAULT):
-				break;
-			case(AT_PICK):
-			{
-				if (item) {
-					Core::GetInstance().eventManager.QueueEvent(new PickItemEvent(action->performer, item));
-				}
-				action->performer->focusedEntity = NULL;
-				Core::GetInstance().entityManager.QueueToDestroy(this);
-				break;
-			}
-    	}
-    }
+
 
 
     ActionType CollectableEntity::GetDefaultActionType() {

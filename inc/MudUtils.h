@@ -31,7 +31,7 @@ namespace Mud {
             }
  
             virtual btScalar addSingleResult(btCollisionWorld::LocalRayResult& rayResult,bool normalInWorldSpace) {
-                if (rayResult.m_collisionObject == m_me)
+                if (rayResult.m_collisionObject == m_me || (rayResult.m_collisionObject->getUserPointer() == NULL))
                     return 1.0;
                 return ClosestRayResultCallback::addSingleResult (rayResult, normalInWorldSpace);
             }

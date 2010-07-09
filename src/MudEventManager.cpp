@@ -1,5 +1,5 @@
 #include <MudEventManager.h>
-#include <MudEvent.h>
+#include <events/MudEvent.h>
 #include <cstdio>
 
 namespace Mud {

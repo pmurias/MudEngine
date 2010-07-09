@@ -37,8 +37,7 @@ namespace Mud {
                 );
 
             body = new btRigidBody(rigidBodyCI);
-            body->setDamping(0.9, 0.99);
-            body->setFriction(0.9);
+
 
             body->setUserPointer(static_cast<void *>(this));
             Core::GetInstance().bulWorld->addRigidBody(body);
@@ -76,8 +75,6 @@ namespace Mud {
     	}
     }
 
-    void SceneryEntity::ActionPerform(Action *action) {
-    }
 
     ActionType SceneryEntity::GetDefaultActionType() {
     	return AT_DEFAULT;

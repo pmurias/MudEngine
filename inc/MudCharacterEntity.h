@@ -11,17 +11,29 @@ namespace Mud {
 
 	class Inventory;
 	class Item;
+	class CollectableEntity;
+	class OpenableContainerEntity;
+	class CharacterAnimationBlender;
 
 	/**
 	 * Game character class
 	 */
     class CharacterEntity : public VisibleEntity, public CharacterEntityProperties {
     public:
+    	CharacterAnimationBlender *animationBlender;
+
         VisibleEntity *focusedEntity;
-        int state;
+        int generalState;
+        int turningState;
+        int walkingState;
         btPairCachingGhostObject *ghostObject;
         btConvexShape *ghostShape;
         btVector3 desiredMoveVelocity;
+
+        CollectableEntity *pickingParam;
+        int pickingPhase;
+
+        OpenableContainerEntity *openCloseParam;
 
         CharacterEntity(const char *name, const char *entityTemplateName);
         ~CharacterEntity();
@@ -37,13 +49,17 @@ namespace Mud {
         void UpdateBehaviour();
 
         void StartMovingForward();
-        void TurnLeft();
-        void TurnRight();
+        void StartTurningLeft();
+        void StartTurningRight();
         void StopMoving();
         void StopTurning();
-        void Run();
-        void Walk();
+        void StartRunning();
+        void StartWalking();
+        void StartPicking(CollectableEntity *target);
         bool IsOnGround();
+        void StartOpening(OpenableContainerEntity *target);
+        void StartClosing(OpenableContainerEntity *target);
+        void LookAt(VisibleEntity *target);
 
         /// Picks item into inventory
         void Pick(Item *item);
@@ -53,7 +69,6 @@ namespace Mud {
 
         /// For character, default action is talk
         ActionType GetDefaultActionType();
-
     };
 
 }

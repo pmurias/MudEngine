@@ -1,5 +1,6 @@
 #include <MudContainerEntity.h>
 #include <MudContainerEntityTemplate.h>
+#include <MudCharacterEntity.h>
 #include <MudCore.h>
 
 namespace Mud {
@@ -26,6 +27,13 @@ namespace Mud {
 
     void ContainerEntity::UpdatePosition() {
         SceneryEntity::UpdatePosition();
+    }
+
+    bool ContainerEntity::CanCharacterAccessIt(CharacterEntity *character) {
+    	Ogre::Vector3 forward = node->getOrientation() * Ogre::Vector3::UNIT_Z;
+    	Ogre::Vector3 charDir = (character->node->getPosition() - node->getPosition()).normalisedCopy();
+
+    	return (fabs(forward.getRotationTo(charDir).getYaw().valueDegrees()) < accessAngle);
     }
 
     ActionType ContainerEntity::GetDefaultActionType() {

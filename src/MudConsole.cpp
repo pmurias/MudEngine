@@ -4,13 +4,20 @@
 namespace Mud {
 
     void Console::CreateLines(int quantity, const char *fontName, const char *fontSize, Ogre::ColourValue colour) {
-        char lineName[255];
+        char name[255];
         for (int i = 0; i < quantity; i++) {
-            sprintf(lineName, "consoleLine%d", i);
+
+            sprintf(name, "consoleLine%d", i);
             TextBox *line = Core::GetInstance().textBoxManager.CreateTextBox(
-                lineName, 10, 10 + (12 * i), 800, 30, fontName, fontSize, colour
+                name, 11, 11 + (12 * i), 800, 30, fontName, fontSize, Ogre::ColourValue(0,0,0)
             );
+            sprintf(name, "shadowLine%d", i);
+            TextBox *shadow = Core::GetInstance().textBoxManager.CreateTextBox(
+				name, 10, 10 + (12 * i), 800, 30, fontName, fontSize, colour
+			);
+
             consoleLines.push_back(line);
+            consoleLines.push_back(shadow);
         }
     }
 
@@ -25,14 +32,16 @@ namespace Mud {
             va_end(args);          
         }
 
-        for (int i = 0; i < consoleLines.size() - 1; i++) {
-            consoleLines[i]->SetCaption(consoleLines[i + 1]->GetCaption());
+        for (size_t i = 0; i < consoleLines.size() - 2; i++) {
+            consoleLines[i]->SetCaption(consoleLines[i + 2]->GetCaption());
+            consoleLines[i+1]->SetCaption(consoleLines[i + 2]->GetCaption());
         }
-        consoleLines[consoleLines.size() - 1]->SetCaption(out);        
+        consoleLines[consoleLines.size() - 2]->SetCaption(out);
+        consoleLines[consoleLines.size() - 1]->SetCaption(out);
     }
 
     void Console::Show() {
-        for (int i = 0; i < consoleLines.size(); i++) {
+        for (size_t i = 0; i < consoleLines.size(); i++) {
             consoleLines[i]->Show();
         }
     }

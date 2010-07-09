@@ -29,8 +29,9 @@ namespace Mud {
 		void StartOpening();
 		void StartClosing();
 		void ToggleState();
+		bool CanCharacterAccessIt(CharacterEntity *character);
 
-		void ActionPerform(Action *action);
+
 
 		ActionType GetDefaultActionType();
 

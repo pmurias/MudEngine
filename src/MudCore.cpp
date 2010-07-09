@@ -43,6 +43,8 @@ namespace Mud {
         ogreCamera = ogreSceneMgr->createCamera("MainCamera");
         ogreCamera->setNearClipDistance(0.1);
         ogreCamera->setFarClipDistance(1000.0);
+        ogreCamera->setAspectRatio((float)(ogreWindow->getWidth())/(float)(ogreWindow->getHeight()));
+        ogreCamera->setFOVy(Ogre::Degree(60.0f));
         ogreViewport = ogreWindow->addViewport(ogreCamera);
 
         OIS::ParamList pl;
@@ -83,7 +85,7 @@ namespace Mud {
             bulPhysicsSolver, 
             bulCollisionConfiguration
             );
-        bulWorld->setGravity(btVector3(0, -10, 0));
+        bulWorld->setGravity(btVector3(0, -25, 0));
     }
 
     void Core::DestroyBullet() {

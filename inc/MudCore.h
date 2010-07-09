@@ -20,13 +20,23 @@
 #include <MudContainerEntity.h>
 #include <MudOpenableContainerEntity.h>
 #include <MudCollectableEntity.h>
+#include <MudRegionEntity.h>
 #include <MudItem.h>
 #include <MudItemTemplate.h>
 #include <MudItemFactory.h>
 #include <MudInventory.h>
-#include <MudEvent.h>
 #include <MudEventManager.h>
 #include <MudUtils.h>
+#include <MudLua.h>
+#include <MudLuaFunction.h>
+#include <MudLuaArgument.h>
+#include <MudLuaIntArgument.h>
+#include <MudLuaResult.h>
+#include <MudLuaIntResult.h>
+
+#include <events/MudEvent.h>
+#include <events/MudCharacterPickedCollectableEvent.h>
+#include <events/MudCharacterReceivedItemEvent.h>
 
 namespace Mud {
 
@@ -77,6 +87,8 @@ namespace Mud {
         TextBoxManager textBoxManager;
         /// On-screen console
         Console console;
+        /// LUA state
+        Lua lua;
         
         /// Main character controller
         CharacterController characterController;

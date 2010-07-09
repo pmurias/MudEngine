@@ -6,6 +6,8 @@
 
 namespace Mud {
 
+	class CharacterEntity;
+
 	/**
 	 * Various container entity class, used for bookshelves, lockers, etc.
 	 */
@@ -18,6 +20,9 @@ namespace Mud {
 
         void SetPosition(Ogre::Vector3 pos);
         void UpdatePosition();
+
+        /// Checks if character can perform access action from it's position
+        bool CanCharacterAccessIt(CharacterEntity *character);
 
         /// For container, default action is plundering
         ActionType GetDefaultActionType();

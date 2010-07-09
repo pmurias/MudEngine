@@ -31,14 +31,12 @@ namespace Mud {
                 Utils::ClosestNotMeRayResultCallback(character->body);
             Core::GetInstance().bulWorld->rayTest(rayBegin, rayEnd, rayCallback);
 
-            Ogre::Vector3 cameraPosition;
-            if (rayCallback.hasHit()) {
-                cameraPosition = Utils::BtVec3ToOgre(
-                    rayBegin + (rayEnd - rayBegin) * rayCallback.m_closestHitFraction
-                );
-            } else {
-                cameraPosition = cameraPositionNoCollision;
-            }
+            float fraction = 0.9f * (rayCallback.hasHit() ? (rayCallback.m_closestHitFraction) : 1.0f);
+
+            Ogre::Vector3 cameraPosition = Utils::BtVec3ToOgre(
+				rayBegin + (rayEnd - rayBegin) * fraction
+			);
+
 
             Core::GetInstance().ogreCamera->setPosition(cameraPosition);
             Core::GetInstance().ogreCamera->lookAt(character->node->getPosition() + character->headOffset);
@@ -53,18 +51,18 @@ namespace Mud {
         }
 
         if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_LEFT)) {
-            character->TurnLeft();
+            character->StartTurningLeft();
         } else
         if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_RIGHT)) {
-            character->TurnRight();
+            character->StartTurningRight();
         } else {
             character->StopTurning();
         }
 
         if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_LSHIFT)) {
-            character->Run();
+            character->StartRunning();
         } else {
-            character->Walk();
+            character->StartWalking();
         }
 
         if (Core::GetInstance().oisKeyboard->isKeyDown(OIS::KC_LCONTROL)) {

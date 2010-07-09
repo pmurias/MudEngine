@@ -23,12 +23,47 @@ namespace Mud {
     /** Character state flags
      */
     enum CharacterState {
-        CS_IDLE = 1,
-        CS_MOVING_FORWARD = 1 << 1,
-        CS_TURNING_LEFT = 1 << 2,        
-        CS_TURNING_RIGHT = 1 << 3,
-        CS_RUNNING = 1 << 4,
-        CS_WALKING = 1 << 5
+        CS_IDLE,
+        CS_MOVING_FORWARD,
+        CS_PICKING,
+        CS_OPENING,
+        CS_CLOSING
+    };
+
+    enum CharacterTurning {
+    	CT_NONE,
+    	CT_LEFT,
+    	CT_RIGHT
+    };
+
+    enum CharacterMoving {
+    	CM_WALK,
+    	CM_RUN
+    };
+
+    enum CharacterPickingPhase {
+    	CPP_BEFORE_PICK,
+    	CPP_AFTER_PICK
+    };
+
+    enum CharacterOpeningPhase {
+    	COP_BEFORE_OPEN,
+    	COP_AFTER_OPEN
+    };
+
+    enum CharacterClosingPhase {
+    	CCP_BEFORE_CLOSE,
+    	CCP_AFTER_CLOSE
+    };
+
+    enum CharacterAnimationState {
+    	CAS_IDLE,
+    	CAS_RUN_NOTHING,
+    	CAS_PICK,
+    	CAS_WALK_NOTHING,
+    	CAS_OPEN_MIDDLE,
+    	CAS_CLOSE_MIDDLE,
+    	CAS_COUNT
     };
 
     /** Item classes

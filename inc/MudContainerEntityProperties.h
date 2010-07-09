@@ -12,6 +12,8 @@ namespace Mud {
     public:
     	/// Determines if container is locked
     	bool isLocked;
+    	/// Angle of access, 0.0 to 360.0
+    	float accessAngle;
  
         /// Collection of Item elements
         Inventory *inventory;

@@ -1,5 +1,4 @@
 #include <MudOpenableContainerEntity.h>
-#include <MudAction.h>
 
 namespace Mud {
 
@@ -62,20 +61,10 @@ namespace Mud {
 		}
 	}
 
-
-	void OpenableContainerEntity::ActionPerform(Action *action) {
-		switch (action->type) {
-			case(AT_DEFAULT):
-				break;
-			case(AT_TOGGLE_CONTAINER_STATE):
-			{
-				if (isOpen || !isLocked) {
-					ToggleState();
-				}
-				break;
-			}
-		}
+	bool OpenableContainerEntity::CanCharacterAccessIt(CharacterEntity *character) {
+		return ContainerEntity::CanCharacterAccessIt(character) && (state == OCS_IDLE);
 	}
+
 
 	ActionType OpenableContainerEntity::GetDefaultActionType() {
 		return AT_TOGGLE_CONTAINER_STATE;

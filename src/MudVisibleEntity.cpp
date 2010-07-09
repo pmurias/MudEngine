@@ -27,8 +27,6 @@ namespace Mud {
     void VisibleEntity::Update() {
     }
 
-    void VisibleEntity::ActionPerform(Action *action) {
-    }
 
     ActionType VisibleEntity::GetDefaultActionType() {
     	return AT_DEFAULT;

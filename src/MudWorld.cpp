@@ -21,11 +21,11 @@ namespace Mud {
 
         Utils::GetMeshInformation(physicsEnt->getMesh(), vertexCount, vertices, indexCount, indices);
  	    btTriangleIndexVertexArray *vertexArray = new btTriangleIndexVertexArray(
-            indexCount / 3, 
-            (int *)(indices), 
-            12, 
-            vertexCount, 
-            (btScalar *)(vertices), 
+            indexCount / 3,
+            (int *)(indices),
+            12,
+            vertexCount,
+            (btScalar *)(vertices),
             12
         );
 
@@ -33,14 +33,16 @@ namespace Mud {
 
         btDefaultMotionState *levelMotionState = new btDefaultMotionState(
             btTransform(btQuaternion(0,0,0,1),btVector3(0,0,0))
-            );
+			);
 
         btRigidBody::btRigidBodyConstructionInfo
             levelRigidBodyCI(0, levelMotionState, collisionShape, btVector3(0,0,0));
         btRigidBody* body = new btRigidBody(levelRigidBodyCI);
         body->setFriction(0.9);
+        body->setUserPointer(this);
 
         core.bulWorld->addRigidBody(body);
+        body->setCollisionFlags(btCollisionObject::CF_STATIC_OBJECT);
     }
 
 }

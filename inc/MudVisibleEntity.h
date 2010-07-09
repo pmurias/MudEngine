@@ -10,9 +10,6 @@
 
 
 namespace Mud {
-
-    class Action;
-
     /** Class representing every entities which have graphical and,
      * optionally physical representation
      */
@@ -40,9 +37,6 @@ namespace Mud {
 
         /// General entity behavior
         virtual void Update();
-
-        /// Used to handle actions when entity is observable
-        virtual void ActionPerform(Action *action);
 
         /// Returns default action type of action performed on this entity
         virtual ActionType GetDefaultActionType();

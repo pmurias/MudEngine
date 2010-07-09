@@ -15,7 +15,6 @@ namespace Mud {
 
         void SetPosition(Ogre::Vector3 pos);
         void UpdatePosition();
-        void ActionPerform(Action *action);
 
         ActionType GetDefaultActionType();
     };
